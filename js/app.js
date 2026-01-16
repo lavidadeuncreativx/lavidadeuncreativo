@@ -111,6 +111,7 @@ function initNavigation() {
     // Highlight active section on scroll
     const sections = document.querySelectorAll('.content-section');
     const navLinks = document.querySelectorAll('.nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-bottom-nav a');
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -124,6 +125,13 @@ function initNavigation() {
         });
 
         navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+
+        mobileLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href').includes(current)) {
                 link.classList.add('active');
