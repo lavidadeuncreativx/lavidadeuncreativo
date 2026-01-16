@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neuro-Aesthetics of Workspace - La vida de un creativo®</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css?v=2">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="split-layout">
+        <!-- Left Column: Fixed Brand & Nav -->
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo®</h1>
+                </a>
+                <p class="brand-subtitle">The 8-6 Grind / Creative Soul</p>
+                <div style="margin-top: 3rem;">
+                    <a href="index.html" class="nav-link hover-target" style="font-size: 1.2rem;">← Volver al inicio</a>
+                </div>
+            </div>
+            <div class="left-footer">
+                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
+                <div class="socials">
+                    <a href="#" class="hover-target">Instagram</a>
+                    <a href="#" class="hover-target">LinkedIn</a>
+                    <a href="#" class="hover-target">Threads</a>
+                    <a href="#" class="hover-target">YouTube</a>
+                </div>
+            </div>
+        </aside>
+        <!-- Right Column: Scrollable Content -->
+        <main class="right-col">
+            <article class="content-section" style="justify-content: flex-start; padding-top: 4rem;">
+                <span style="font-size: 0.9rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: block;">Oct 12, 2024</span>
+                <h1 style="font-size: clamp(3rem, 5vw, 5rem); line-height: 1; font-weight: 800; margin-bottom: 3rem; text-transform: uppercase;">The Neuro-Aesthetics of Workspace</h1>
+                
+                <div style="width: 100%; aspect-ratio: 16/9; background-color: var(--text-color); margin-bottom: 3rem; opacity: 0.1;"></div>
+
+                <div class="content-block">
+                    <p class="intro-text" style="font-size: 1.5rem; margin-bottom: 2rem;">
+                        Our environment shapes our thoughts. The concept of neuro-aesthetics suggests that our brains are hardwired to respond to certain visual cues—symmetry, balance, and nature. 
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                         In the chaotic world of the 9-5 creative, reclaiming your mental space starts with your physical space. Every object on your desk competes for your attention. By reducing visual noise, we free up processing power for what truly matters: creation.
+                    </p>
+                    <h2 style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; font-weight: 700;">Clutter is Cognitive Load</h2>
+                    <p style="margin-bottom: 1.5rem;">
+                        Minimalism isn't just an aesthetic choice; it's a productivity hack. When you strip away the inessential, the essential speaks. This is the core philosophy of 'La vida de un creativo'.
+                    </p>
+                </div>
+            </article>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
