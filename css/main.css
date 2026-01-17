@@ -142,10 +142,10 @@ button {
 }
 
 .main-title {
-    font-size: clamp(4rem, 6vw, 8rem);
-    /* Bigger */
+    font-size: clamp(3rem, 5vw, 6rem);
+    /* Adjusted for better fit of long words */
     font-weight: 900;
-    line-height: 0.85;
+    line-height: 0.9;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
 }
@@ -380,6 +380,7 @@ button {
         margin-bottom: 4rem;
     }
 }
+
 /* Force update on padding and specificity for theme toggle to ensure UI */
 button.theme-toggle {
     border-radius: 999px !important;
@@ -389,7 +390,8 @@ button.theme-toggle {
 /* Sticky Mobile Nav */
 @media (max-width: 1024px) {
     .main-nav {
-        display: none !important; /* Hide original nav position */
+        display: none !important;
+        /* Hide original nav position */
     }
 
     body::after {
@@ -417,7 +419,7 @@ button.theme-toggle {
         z-index: 999;
         overflow-x: auto;
     }
-    
+
     .mobile-bottom-nav a {
         font-size: 0.9rem;
         font-weight: 700;
@@ -430,17 +432,18 @@ button.theme-toggle {
     .mobile-bottom-nav a.active {
         color: var(--text-color);
     }
-    
+
     /* Ensure content doesn't get hidden behind bar */
     .right-col {
-        padding-bottom: 5rem; 
+        padding-bottom: 5rem;
     }
 }
 
 /* Sticky Mobile Nav */
 @media (max-width: 1024px) {
     .main-nav {
-        display: none !important; /* Hide original nav position */
+        display: none !important;
+        /* Hide original nav position */
     }
 
     /* New Mobile Bottom Bar */
@@ -456,9 +459,9 @@ button.theme-toggle {
         justify-content: space-around;
         z-index: 999;
         overflow-x: auto;
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
-    
+
     .mobile-bottom-nav a {
         font-size: 0.8rem;
         font-weight: 700;
@@ -473,10 +476,10 @@ button.theme-toggle {
     .mobile-bottom-nav a.active {
         color: var(--text-color);
     }
-    
+
     /* Ensure content doesn't get hidden behind bar */
     .right-col {
-        padding-bottom: 6rem; 
+        padding-bottom: 6rem;
     }
 }
 
