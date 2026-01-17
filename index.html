@@ -1,68 +1,373 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en" data-theme="light" style="scroll-behavior: smooth;"><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La vida de un creativo | Israel Granados</title>
+    <meta name="description" content="Archivo personal sobre el dise<!DOCTYPE html>
+<html lang="en" data-theme="light" style="scroll-behavior: smooth;"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Israel Granados | La Vida de un Creativo</title>
-    <meta name="description" content="Un archivo sobre el diseño de una vida creativa, sistemas e intención.">
-    <link rel="stylesheet" href="css/main.css">
+    <title>La vida de un creativo | Israel Granados</title>
+    <meta name="description" content="Archivo personal sobre el diseño de una vida creativa, sistemas e intención.">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Open Graph / SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="La vida de un creativo | Israel Granados">
+    <meta property="og:description" content="Archivo personal sobre el diseño de una vida creativa.">
+    <meta property="og:image" content="https://lavidadeuncreativo.com/og-image.jpg">
+
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
+
         gtag('config', 'G-N8CH8RN1SW');
     </script>
+
+    <!-- Vercel Analytics & Speed Insights -->
     <script>
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
-</head>
-<body>
-    <nav>
-        <div class="logo">La Vida de un Creativo</div>
-        <ul>
-            <li><a href="#blog">Archivo</a></li>
-            <li><a href="#templates">Herramientas</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
-    </nav>
-    <header id="hero">
-        <h1>Diseñar una vida con intención.</h1>
-        <p>Este no es un portafolio de éxitos, sino un archivo de lo que voy aprendiendo sobre sistemas, IA y el camino hacia una creatividad sostenible.</p>
-    </header>
-    <main>
-        <section id="intro">
-            <p>Hola, soy Israel. Trabajo como director creativo y diseñador de sistemas. Paso mis días pensando en cómo la tecnología puede hacernos más humanos, no menos.</p>
-        </section>
-        <section id="blog">
-            <h2>Archivo</h2>
-            <article>
-                <h3>12 libros para leer este año</h3>
-                <p>Una curaduría personal sobre los libros que me han ayudado a pensar mejor.</p>
-                <a href="blog-post.html">Leer más</a>
-            </article>
-        </section>
-        <section id="templates">
-            <h2>Herramientas</h2>
-            <div class="product">
-                <h3>Task Manager Dashboard – Notion</h3>
-                <p>No es sobre productividad, es sobre tener claridad. El sistema que uso para mantener el control sin perder la calma.</p>
+
+    <!-- Fonts: Inter for Helvetica-like feel. Bold weights. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<style id="antigravity-scroll-lock-style">
+  html:root body.antigravity-scroll-lock {
+    overflow: hidden !important;
+  }
+</style><style>
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+</style></head>
+
+<body class="" style="">
+    <div class="cursor"></div><div class="split-layout">
+        <!-- Left Column: Fixed Brand & Nav -->
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+                <p class="brand-subtitle">Archivo personal / Israel Granados</p>
             </div>
-        </section>
-        <section id="newsletter">
-            <h2>El Newsletter</h2>
-            <p>Cartas editoriales sobre trabajo, vida y criterio. Una vez a la semana, directo a tu correo.</p>
-        </section>
-        <section id="contact">
-            <h2>Trabajemos juntos</h2>
-            <p>Selecciono pocos proyectos al año. Si crees que SUTURA Systems puede ayudarte con estrategia digital o automatización, hablemos.</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2026 Israel Granados. Hecho con intención.</p>
-    </footer>
-</body>
-</html>
+
+            <nav class="main-nav">
+                <a href="#about" class="nav-link hover-target">Contexto</a>
+                <a href="#blog" class="nav-link hover-target">Journal</a>
+                <a href="#templates" class="nav-link hover-target">Herramientas</a>
+                <a href="#newsletter" class="nav-link hover-target">Cartas</a>
+                <a href="#projects" class="nav-link hover-target">Estudio</a>
+            </nav>
+
+            <div class="left-footer">
+                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
+                <div class="socials">
+                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
+                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
+                    <a href="https://www.threads.com/@lavidadeuncreativo" target="_blank" class="hover-target">Threads</a>
+                    <a href="https://www.youtube.com/@lavidadeuncreativo" target="_blank" class="hover-target">YouTube</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: Scrollable Content -->
+        <main class="right-col">
+            <section id="about" class="content-section">
+                <div class="section-header">
+                    <h2>01. Contexto</h2>
+                </div>
+                <div class="content-block">
+                    <h3 style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 2rem; line-height: 1.1; letter-spacing: -0.02em;">
+                        El arte de hacer que las cosas funcionen.
+                    </h3>
+                    <p class="intro-text" style="font-size: 1.3rem; line-height: 1.5; font-weight: 400;">
+                        Soy Israel. Como muchos, vivo entre dos mundos: la estructura de un trabajo full-time y la
+                        necesidad constante de crear.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        Durante mucho tiempo pensé que tenía que elegir uno. Ahora sé que el secreto no es elegir, sino
+                        diseñar un sistema donde ambos convivan.
+                        <br><br>
+                        Este sitio no es un manual de éxito. Es mi archivo personal. Aquí documento lo que aprendo sobre
+                        organización, diseño y creatividad tranquila mientras construyo una vida que disfruto.
+                    </p>
+                </div>
+            </section>
+
+            <section id="blog" class="content-section">
+                <div class="section-header">
+                    <h2>02. Journal</h2>
+                </div>
+                <div class="blog-list">
+                    <article class="blog-item hover-target" onclick="window.location.href='blog-post.html'">
+                        <span class="date">Lecturas</span>
+                        <h3>12 libros que cambiaron mi perspectiva</h3>
+                        <span class="arrow">↗</span>
+                    </article>
+                    <article class="blog-item hover-target" style="opacity: 0.5; pointer-events: none;">
+                        <span class="date">Ensayo</span>
+                        <h3>Sobre la paciencia</h3>
+                        <span class="arrow">Pronto</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="templates" class="content-section">
+                <div class="section-header">
+                    <h2>03. Herramientas</h2>
+                </div>
+                <div class="content-block" style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Mi Dashboard en Notion</h3>
+                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;">
+                        La única forma que encontré de mantener el orden sin perder la cabeza. Es la estructura exacta
+                        que uso todos los días para gestionar mis tareas, proyectos y vida personal.
+                    </p>
+
+                    <div class="card hover-target" onclick="window.open('https://lavidadeuncreativx.notion.site/Task-Manager-Dashboard-Plantilla-2e8334aa15c180ec8fdaf798e10ba795?pvs=74', '_blank')" style="background: var(--text-color); color: var(--bg-color); cursor: pointer; border-radius: 4px;">
+                        <span class="card-type" style="color: var(--bg-color); opacity: 0.7;">Plantilla Gratuita</span>
+                        <h3 style="margin-top: 1rem; font-size: 1.5rem;">Descargar Template</h3>
+                        <span class="arrow" style="align-self: flex-end;">→</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="newsletter" class="content-section">
+                <div class="section-header">
+                    <h2>04. Cartas</h2>
+                </div>
+                <div class="content-block">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.1;">
+                        Notas de domingo.
+                    </h3>
+                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5;">
+                        Una vez a la semana comparto lo que estoy explorando. Sin trucos de marketing, solo reflexiones
+                        honestas sobre el proceso creativo, música que escucho y herramientas que pruebo.
+                    </p>
+<html lang="en" data-theme="light" style="scroll-behavior: smooth;"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La vida de un creativo | Israel Granados</title>
+    <meta name="description" content="Archivo personal sobre el diseño de una vida creativa, sistemas e intención.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Open Graph / SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="La vida de un creativo | Israel Granados">
+    <meta property="og:description" content="Archivo personal sobre el diseño de una vida creativa.">
+    <meta property="og:image" content="https://lavidadeuncreativo.com/og-image.jpg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-N8CH8RN1SW');
+    </script>
+
+    <!-- Vercel Analytics & Speed Insights -->
+    <script>
+        window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <!-- Fonts: Inter for Helvetica-like feel. Bold weights. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+</head>
+
+<body class="" style="">
+    <div class="cursor"></div><div class="split-layout">
+        <!-- Left Column: Fixed Brand & Nav -->
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+                <p class="brand-subtitle">Archivo personal / Israel Granados</p>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#about" class="nav-link hover-target">Contexto</a>
+                <a href="#blog" class="nav-link hover-target">Journal</a>
+                <a href="#templates" class="nav-link hover-target">Herramientas</a>
+                <a href="#newsletter" class="nav-link hover-target">Cartas</a>
+                <a href="#projects" class="nav-link hover-target">Estudio</a>
+            </nav>
+
+            <div class="left-footer">
+                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
+                <div class="socials">
+                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
+                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
+                    <a href="https://www.threads.com/@lavidadeuncreativo" target="_blank" class="hover-target">Threads</a>
+                    <a href="https://www.youtube.com/@lavidadeuncreativo" target="_blank" class="hover-target">YouTube</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: Scrollable Content -->
+        <main class="right-col">
+            <section id="about" class="content-section">
+                <div class="section-header">
+                    <h2>01. Contexto</h2>
+                </div>
+                <div class="content-block">
+                    <h3 style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 2rem; line-height: 1.1; letter-spacing: -0.02em;">
+                        El arte de hacer que las cosas funcionen.
+                    </h3>
+                    <p class="intro-text" style="font-size: 1.3rem; line-height: 1.5; font-weight: 400;">
+                        Soy Israel. Como muchos, vivo entre dos mundos: la estructura de un trabajo full-time y la
+                        necesidad constante de crear.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        Durante mucho tiempo pensé que tenía que elegir uno. Ahora sé que el secreto no es elegir, sino
+                        diseñar un sistema donde ambos convivan.
+                        <br><br>
+                        Este sitio no es un manual de éxito. Es mi archivo personal. Aquí documento lo que aprendo sobre
+                        organización, diseño y creatividad tranquila mientras construyo una vida que disfruto.
+                    </p>
+                </div>
+            </section>
+
+            <section id="blog" class="content-section">
+                <div class="section-header">
+                    <h2>02. Journal</h2>
+                </div>
+                <div class="blog-list">
+                    <article class="blog-item hover-target" onclick="window.location.href='blog-post.html'">
+                        <span class="date">Lecturas</span>
+                        <h3>12 libros que cambiaron mi perspectiva</h3>
+                        <span class="arrow">↗</span>
+                    </article>
+                    <article class="blog-item hover-target" style="opacity: 0.5; pointer-events: none;">
+                        <span class="date">Ensayo</span>
+                        <h3>Sobre la paciencia</h3>
+                        <span class="arrow">Pronto</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="templates" class="content-section">
+                <div class="section-header">
+                    <h2>03. Herramientas</h2>
+                </div>
+                <div class="content-block" style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Mi Dashboard en Notion</h3>
+                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;">
+                        La única forma que encontré de mantener el orden sin perder la cabeza. Es la estructura exacta
+                        que uso todos los días para gestionar mis tareas, proyectos y vida personal.
+                    </p>
+
+                    <div class="card hover-target" onclick="window.open('https://lavidadeuncreativx.notion.site/Task-Manager-Dashboard-Plantilla-2e8334aa15c180ec8fdaf798e10ba795?pvs=74', '_blank')" style="background: var(--text-color); color: var(--bg-color); cursor: pointer; border-radius: 4px;">
+                        <span class="card-type" style="color: var(--bg-color); opacity: 0.7;">Plantilla Gratuita</span>
+                        <h3 style="margin-top: 1rem; font-size: 1.5rem;">Descargar Template</h3>
+                        <span class="arrow" style="align-self: flex-end;">→</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="newsletter" class="content-section">
+                <div class="section-header">
+                    <h2>04. Cartas</h2>
+                </div>
+                <div class="content-block">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.1;">
+                        Notas de domingo.
+                    </h3>
+                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5;">
+                        Una vez a la semana comparto lo que estoy explorando. Sin trucos de marketing, solo reflexiones
+                        honestas sobre el proceso creativo, música que escucho y herramientas que pruebo.
+                    </p>
+                    <div style="margin-top: 2rem; border-bottom: 1px solid var(--text-color); display: inline-flex; align-items: center; justify-content: space-between; width: 100%; max-width: 400px; padding-bottom: 0.5rem;">
+                        <span style="color: var(--secondary-text); font-style: italic;">Tu correo aquí</span>
+                        <span>→</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h2>05. Estudio</h2>
+                </div>
+                <div class="content-block" style="margin-bottom: 3rem;">
+                    <p class="intro-text" style="font-size: 1.2rem; line-height: 1.5;">
+                        Ocasionalmente colaboro con marcas y creativos para ayudarles a poner orden en su caos digital a
+                        través de sistemas y diseño.
+                    </p>
+                </div>
+
+                <div class="grid-2-col" style="margin-bottom: 4rem;">
+                    <div class="card hover-target">
+                        <span class="card-type">Automatización</span>
+                        <h3>Agency OS</h3>
+                        <p>Infraestructura Notion + Make.</p>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="card hover-target">
+                        <span class="card-type">Consultoría</span>
+                        <h3>Mezcal Brand</h3>
+                        <p>Estrategia de lanzamiento.</p>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <p style="margin-bottom: 1rem;">
+                        ¿Tienes un proyecto en mente? Me encantaría escucharlo.
+                    </p>
+                    <a href="mailto:hola@lavidadeuncreativo.com" class="hover-target" style="font-size: 1.5rem; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px;">
+                        Envíame un correo
+                    </a>
+                </div>
+            </section>
+
+            <footer class="right-footer">
+                <p>© 2024 La vida de un creativo</p>
+                <p style="margin-top: 0.5rem; opacity: 0.5;">Hecho a mano.</p>
+            </footer>
+        </main>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="#about" class="active">Contexto</a>
+        <a href="#blog">Journal</a>
+        <a href="#templates">Herramientas</a>
+        <a href="#projects">Estudio</a>
+    </nav>
+    <script src="js/app.js"></script>
+</body></html>
