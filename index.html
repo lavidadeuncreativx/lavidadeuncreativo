@@ -1,236 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La vida de un creativo® | Israel Granados</title>
-    <meta name="description" content="Espacio para el creativo 9-5. Recursos, blog, inspiración y herramientas para equilibrar la estabilidad laboral con el alma creativa.">
-
-    <!-- Favicon -->
+    <title>Israel Granados | La Vida de un Creativo</title>
+    <meta name="description" content="Un archivo sobre el diseño de una vida creativa, sistemas e intención.">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- Open Graph / SEO -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="La vida de un creativo® | Israel Granados">
-    <meta property="og:description" content="Espacio para el creativo 9-5. Recursos, blog, inspiración y herramientas.">
-    <meta property="og:image" content="https://lavidadeuncreativo.com/og-image.jpg">
-
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-N8CH8RN1SW');
     </script>
-
-    <!-- Vercel Analytics & Speed Insights -->
     <script>
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <!-- Fonts: Inter for Helvetica-like feel. Bold weights. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css">
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 </head>
-
 <body>
-    <div class="cursor"></div>
-
-    <div class="split-layout">
-        <!-- Left Column: Fixed Brand & Nav -->
-        <aside class="left-col">
-            <div class="brand-container">
-                <a href="index.html" class="hover-target" style="display: block;">
-                    <h1 class="main-title hover-target">La vida de un<br>creativo®</h1>
-                </a>
-                <p class="brand-subtitle">Diseño de vida / Estrategia / Sistemas</p>
-            </div>
-
-            <nav class="main-nav">
-                <a href="#about" class="nav-link hover-target">Manifiesto</a>
-                <a href="#blog" class="nav-link hover-target">Editorial</a>
-                <a href="#templates" class="nav-link hover-target">Sistemas</a>
-                <a href="#newsletter" class="nav-link hover-target">Newsletter</a>
-                <a href="#projects" class="nav-link hover-target">SUTURA®</a>
-            </nav>
-
-            <div class="left-footer">
-                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
-                <div class="socials">
-                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
-                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
-                    <a href="https://www.threads.com/@lavidadeuncreativo" target="_blank" class="hover-target">Threads</a>
-                    <a href="https://www.youtube.com/@lavidadeuncreativo" target="_blank" class="hover-target">YouTube</a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Right Column: Scrollable Content -->
-        <main class="right-col">
-            <section id="about" class="content-section">
-                <div class="section-header">
-                    <h2>01. Introducción</h2>
-                </div>
-                <div class="content-block">
-                    <h3 style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 2rem; line-height: 1; text-transform: uppercase; letter-spacing: -0.04em;">
-                        No busques equilibrio.<br>Busca diseño.</h3>
-                    <p class="intro-text">
-                        La creatividad no es un don místico, es una decisión logística.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        Vivimos bajo la falsa dicotomía de que debes elegir entre estabilidad y alma. Entre el sueldo de
-                        las 9-5 y el caos del artista.
-                        <br><br>
-                        Este espacio es la documentación táctica de una tercera vía: construir una vida creativa que sea
-                        rentable, sistémica y escalable. Sin renunciar a la ambición, pero sin romantizar el burnout.
-                    </p>
-                    <p>
-                        Aquí no encontrarás motivación barata. Encontrarás ingeniería de vida.
-                    </p>
-                </div>
-            </section>
-
-            <section id="blog" class="content-section">
-                <div class="section-header">
-                    <h2>02. Editorial</h2>
-                </div>
-                <div class="blog-list">
-                    <article class="blog-item hover-target" onclick="window.location.href='blog-post.html'">
-                        <span class="date">Curaduría</span>
-                        <h3>12 Libros Tácticos para este año</h3>
-                        <span class="arrow">↗</span>
-                    </article>
-                    <article class="blog-item hover-target" style="opacity: 0.5; pointer-events: none;">
-                        <span class="date">Ensayo</span>
-                        <h3>La estética del rigor</h3>
-                        <span class="arrow">Lock</span>
-                    </article>
-                </div>
-            </section>
-
-            <section id="templates" class="content-section">
-                <div class="section-header">
-                    <h2>03. Sistemas / Descargables</h2>
-                </div>
-                <div class="content-block" style="margin-bottom: 3rem;">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">Task Manager Dashboard
-                        — Notion</h3>
-                    <p class="intro-text" style="font-size: 1.2rem;">No necesitas más tiempo. Necesitas claridad.</p>
-
-                    <div style="margin: 2rem 0; border-left: 2px solid var(--text-color); padding-left: 2rem;">
-                        <p style="margin-bottom: 1rem;"><strong>Lo que es:</strong> Un sistema operativo centralizado
-                            para gestionar proyectos, tareas y vida personal sin fricción. Basado en principios de
-                            Atomic Design.</p>
-                        <p style="margin-bottom: 1rem;"><strong>Para quién:</strong> Creativos con múltiples frentes
-                            abiertos que pierden más tiempo organizando que ejecutando.</p>
-                        <p><strong>El resultado:</strong> Dejas de usar tu cerebro como almacén y empiezas a usarlo como
-                            procesador.</p>
-                    </div>
-
-                    <div class="card hover-target" onclick="window.open('https://lavidadeuncreativx.notion.site/Task-Manager-Dashboard-Plantilla-2e8334aa15c180ec8fdaf798e10ba795?pvs=74', '_blank')" style="background: var(--text-color); color: var(--bg-color); cursor: pointer;">
-                        <span class="card-type" style="color: var(--bg-color); opacity: 0.7;">System v1.0</span>
-                        <h3 style="margin-top: 1rem;">Obtener Dashboard</h3>
-                        <span class="arrow" style="align-self: flex-end;">→</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="newsletter" class="content-section">
-                <div class="section-header">
-                    <h2>04. Newsletter</h2>
-                </div>
-                <div class="content-block">
-                    <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem; text-transform: uppercase; line-height: 0.9;">
-                        Señales,<br>no ruido.
-                    </h3>
-                    <p class="intro-text">
-                        Internet es una máquina de distracción infinita. Mi newsletter es el antídoto.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        Una vez a la semana, envío un correo con claridad táctica sobre sistemas, diseño y estrategia.
-                        Sin relleno. Sin promesas de "hacerse rico rápido". Solo criterio destilado para pensar mejor tu
-                        trabajo.
-                    </p>
-                    <div style="margin-top: 2rem; border-bottom: 2px solid var(--text-color); display: inline-flex; align-items: center; justify-content: space-between; width: 100%; max-width: 400px; padding-bottom: 0.5rem;">
-                        <span style="color: var(--secondary-text);">Tu correo electrónico</span>
-                        <span>→</span>
-                    </div>
-                    <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--secondary-text);">Únete a una minoría
-                        informada.</p>
-                </div>
-            </section>
-
-            <section id="projects" class="content-section">
-                <div class="section-header">
-                    <h2>05. SUTURA® Systems</h2>
-                </div>
-                <div class="content-block" style="margin-bottom: 3rem;">
-                    <p class="intro-text">
-                        SUTURA® es mi práctica de consultoría en automatización y estrategia digital.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        No vendo "servicios de diseño". Construyo la infraestructura digital para que negocios
-                        escalables operen sin caos. Desde la arquitectura de marca hasta la automatización de procesos
-                        con IA.
-                    </p>
-                    <p style="border: 1px solid var(--border-color); padding: 1rem; display: inline-block;">
-                        <strong>Estado:</strong> Abierto a nuevos proyectos selectos (Q1 2026).
-                    </p>
-                </div>
-
-                <div class="grid-2-col" style="margin-bottom: 4rem;">
-                    <div class="card hover-target">
-                        <span class="card-type">Automatización</span>
-                        <h3>Agency OS</h3>
-                        <p>Infraestructura completa Notion + Make.</p>
-                        <span class="arrow">→</span>
-                    </div>
-                    <div class="card hover-target">
-                        <span class="card-type">Estrategia</span>
-                        <h3>Mezcal Brand</h3>
-                        <p>Lanzamiento D2C y sistemas de venta.</p>
-                        <span class="arrow">→</span>
-                    </div>
-                </div>
-
-                <div class="content-block">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">¿Tienes un problema caro que resolver?</h3>
-                    <p style="margin-bottom: 2rem;">
-                        Busco trabajar con fundadores y marcas que entienden que el diseño es función, no decoración. Si
-                        estás listo para estructurar tu caos, hablemos.
-                    </p>
-                    <a href="mailto:hola@lavidadeuncreativo.com" class="hover-target" style="font-size: 2rem; font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px;">
-                        Iniciar Solicitud
-                    </a>
-                </div>
-            </section>
-
-            <footer class="right-footer">
-                <p>© 2024 La vida de un creativo®</p>
-                <p style="margin-top: 0.5rem; opacity: 0.5;">Diseñado sin plantillas. Construido con criterio.</p>
-            </footer>
-        </main>
-    </div>
-
-    <nav class="mobile-bottom-nav">
-        <a href="#about" class="active">Sobre mí</a>
-        <a href="#blog">Blog</a>
-        <a href="#templates">Plantillas</a>
-        <a href="#projects">Proyectos</a>
+    <nav>
+        <div class="logo">La Vida de un Creativo</div>
+        <ul>
+            <li><a href="#blog">Archivo</a></li>
+            <li><a href="#templates">Herramientas</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
     </nav>
-    <script src="js/app.js"></script>
+    <header id="hero">
+        <h1>Diseñar una vida con intención.</h1>
+        <p>Este no es un portafolio de éxitos, sino un archivo de lo que voy aprendiendo sobre sistemas, IA y el camino hacia una creatividad sostenible.</p>
+    </header>
+    <main>
+        <section id="intro">
+            <p>Hola, soy Israel. Trabajo como director creativo y diseñador de sistemas. Paso mis días pensando en cómo la tecnología puede hacernos más humanos, no menos.</p>
+        </section>
+        <section id="blog">
+            <h2>Archivo</h2>
+            <article>
+                <h3>12 libros para leer este año</h3>
+                <p>Una curaduría personal sobre los libros que me han ayudado a pensar mejor.</p>
+                <a href="blog-post.html">Leer más</a>
+            </article>
+        </section>
+        <section id="templates">
+            <h2>Herramientas</h2>
+            <div class="product">
+                <h3>Task Manager Dashboard – Notion</h3>
+                <p>No es sobre productividad, es sobre tener claridad. El sistema que uso para mantener el control sin perder la calma.</p>
+            </div>
+        </section>
+        <section id="newsletter">
+            <h2>El Newsletter</h2>
+            <p>Cartas editoriales sobre trabajo, vida y criterio. Una vez a la semana, directo a tu correo.</p>
+        </section>
+        <section id="contact">
+            <h2>Trabajemos juntos</h2>
+            <p>Selecciono pocos proyectos al año. Si crees que SUTURA Systems puede ayudarte con estrategia digital o automatización, hablemos.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Israel Granados. Hecho con intención.</p>
+    </footer>
 </body>
 </html>
