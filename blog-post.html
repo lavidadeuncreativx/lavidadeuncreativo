@@ -1,179 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>12 Libros Tácticos - La vida de un creativo®</title>
-
+    <title>12 libros para leer este año | La Vida de un Creativo</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-N8CH8RN1SW');
     </script>
-
     <!-- Vercel Analytics & Speed Insights -->
     <script>
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <link rel="stylesheet" href="css/main.css?v=2">
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
-
 <body>
-    <div class="cursor"></div>
-
-    <div class="split-layout">
-        <!-- Left Column: Fixed Brand & Nav -->
-        <aside class="left-col">
-            <div class="brand-container">
-                <a href="index.html" class="hover-target" style="display: block;">
-                    <h1 class="main-title hover-target">La vida de un<br>creativo®</h1>
-                </a>
-                <p class="brand-subtitle">Editorial / Curaduría</p>
-                <div style="margin-top: 3rem;">
-                    <a href="index.html" class="nav-link hover-target" style="font-size: 1.2rem;">← Volver al índice</a>
-                </div>
-            </div>
-
-
-            <div class="left-footer">
-                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
-                <div class="socials">
-                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
-                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
-                    <a href="https://www.threads.com/@lavidadeuncreativo" target="_blank" class="hover-target">Threads</a>
-                    <a href="https://www.youtube.com/@lavidadeuncreativo" target="_blank" class="hover-target">YouTube</a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Right Column: Scrollable Content -->
-        <main class="right-col">
-            <article class="content-section" style="justify-content: flex-start; padding-top: 4rem;">
-                <span style="font-size: 0.9rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: block;">
-                    Biblioteca Estratégica
-                </span>
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; font-weight: 800; margin-bottom: 3rem; text-transform: uppercase;">
-                    12 Libros Tácticos para leer este año
-                </h1>
-
-                <div class="content-block">
-                    <p class="intro-text" style="font-size: 1.5rem; margin-bottom: 2rem;">
-                        La mayoría de las listas de libros son ruido. Esta es una selección de armamento.
-                    </p>
-                    <p style="margin-bottom: 2.5rem;">
-                        En un mundo saturado de información, el criterio es la ventaja competitiva definitiva. No leo
-                        para entretenerme, leo para desarmar problemas complejos. Esta lista de 12 títulos ha sido
-                        curada no por su popularidad, sino por su utilidad táctica para el creativo que opera también
-                        como estratega.
-                    </p>
-                    <p style="margin-bottom: 3rem; font-style: italic; color: var(--secondary-text);">
-                        Nota: Esta lista está viva. Se refina y se purga.
-                    </p>
-
-                    <!-- Lista Curada (Simulada/Estratégica) -->
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">01. The War of Art</h3>
-                        <p style="font-weight: 700; color: var(--secondary-text); margin-bottom: 1rem;">Steven
-                            Pressfield</p>
-                        <p style="margin-bottom: 1rem;">
-                            <strong>Por qué leerlo:</strong> Porque el 90% de tu fracaso no es falta de talento, es
-                            Resistencia. Este libro te enseña a identificar al enemigo interno.
-                        </p>
-                        <blockquote style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic; margin-bottom: 1rem;">
-                            "La aficionada espera inspiración. El profesional se levanta y trabaja."
-                        </blockquote>
-                        <a href="#" style="text-decoration: underline; font-size: 0.9rem; opacity: 0.7;">[Adquirir
-                            copia]</a>
-                    </div>
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">02. $100M Offers</h3>
-                        <p style="font-weight: 700; color: var(--secondary-text); margin-bottom: 1rem;">Alex Hormozi</p>
-                        <p style="margin-bottom: 1rem;">
-                            <strong>Por qué leerlo:</strong> Deja de cobrar por hora y empieza a cobrar por valor.
-                            Hormozi desglosa la matemática de una oferta irresistible. Es el manual de operaciones para
-                            dejar de ser un commodity.
-                        </p>
-                        <blockquote style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic; margin-bottom: 1rem;">
-                            "Haz ofertas tan buenas que la gente se sienta estúpida diciendo que no."
-                        </blockquote>
-                        <a href="#" style="text-decoration: underline; font-size: 0.9rem; opacity: 0.7;">[Adquirir
-                            copia]</a>
-                    </div>
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">03. Show Your Work!</h3>
-                        <p style="font-weight: 700; color: var(--secondary-text); margin-bottom: 1rem;">Austin Kleon</p>
-                        <p style="margin-bottom: 1rem;">
-                            <strong>Por qué leerlo:</strong> El talento que no se ve, no existe. Kleon explica cómo
-                            documentar tu proceso para atraer oportunidades sin necesidad de "venderte" agresivamente.
-                        </p>
-                        <a href="#" style="text-decoration: underline; font-size: 0.9rem; opacity: 0.7;">[Adquirir
-                            copia]</a>
-                    </div>
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">04. Sapiens</h3>
-                        <p style="font-weight: 700; color: var(--secondary-text); margin-bottom: 1rem;">Yuval Noah
-                            Harari</p>
-                        <p style="margin-bottom: 1rem;">
-                            <strong>Por qué leerlo:</strong> Para entender marketing, necesitas entender a los humanos.
-                            Harari explica los mitos compartidos que mueven al mundo (dinero, imperios, marcas).
-                        </p>
-                        <a href="#" style="text-decoration: underline; font-size: 0.9rem; opacity: 0.7;">[Adquirir
-                            copia]</a>
-                    </div>
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">05. Zero to One</h3>
-                        <p style="font-weight: 700; color: var(--secondary-text); margin-bottom: 1rem;">Peter Thiel</p>
-                        <p style="margin-bottom: 1rem;">
-                            <strong>Por qué leerlo:</strong> La competencia es para los perdedores. Aprende a construir
-                            monopolios creativos creando algo verdaderamente nuevo, no solo iterativo.
-                        </p>
-                        <a href="#" style="text-decoration: underline; font-size: 0.9rem; opacity: 0.7;">[Adquirir
-                            copia]</a>
-                    </div>
-
-                    <div class="book-item" style="margin-bottom: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                        <p style="color: var(--secondary-text); font-style: italic;">[Lista completa disponible en la
-                            versión descargable...]</p>
-                    </div>
-
-                    <h2 style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; font-weight: 700;">El input
-                        determina el output</h2>
-                    <p style="margin-bottom: 1.5rem;">
-                        Eres lo que consumes. Si alimentas tu cerebro con basura, producirás basura. Si lo alimentas con
-                        estructura, estrategia y filosofía, tu trabajo reflejará esa profundidad.
-                    </p>
-                    <p>
-                        Lee uno. Aplícalo. Repite.
-                    </p>
-                </div>
-            </article>
-        </main>
-    </div>
-
-    <script src="js/app.js"></script>
+    <article class="blog-post">
+        <header>
+            <h1>12 libros para leer este año</h1>
+            <p class="subtitle">No es una lista definitiva, solo lo que me ha ayudado a entender mejor el mundo y mi trabajo. Sin pretensiones.</p>
+        </header>
+        <section class="content">
+            <p>He pasado mucho tiempo buscando respuestas en libros. Algunos me han dado claridad, otros solo ruido. Esta es una curaduría de lo que, para mí, tiene criterio.</p>
+            
+            <ul class="book-list">
+                <li>
+                    <strong>The Almanac of Naval Ravikant</strong>
+                    <p>Razón: Una base sólida sobre riqueza y felicidad sin adornos.</p>
+                    <span class="impact">"La riqueza es lo que tienes mientras duermes."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Show Your Work! - Austin Kleon</strong>
+                    <p>Razón: Me enseñó que documentar es más importante que crear una obra maestra cada día.</p>
+                    <span class="impact">"Comparte algo pequeño cada día."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Atomic Habits - James Clear</strong>
+                    <p>Razón: Porque los sistemas son los que ganan, no las metas.</p>
+                    <span class="impact">"No te elevas al nivel de tus metas, caes al nivel de tus sistemas."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Deep Work - Cal Newport</strong>
+                    <p>Razón: En un mundo de ruido, la concentración es un superpoder.</p>
+                    <span class="impact">"El trabajo profundo es necesario para extraer cada gota de valor de tu capacidad intelectual."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>The War of Art - Steven Pressfield</strong>
+                    <p>Razón: Para entender que la resistencia es real y cómo vencerla.</p>
+                    <span class="impact">"Lo más importante es presentarse y hacer el trabajo."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Storybrand - Donald Miller</strong>
+                    <p>Razón: Claridad en la comunicación. Deja de ser el héroe, sé el guía.</p>
+                    <span class="impact">"Si confundes, pierdes."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>The 4-Hour Workweek - Tim Ferriss</strong>
+                    <p>Razón: Aunque parezca viejo, la mentalidad de libertad sigue siendo vigente.</p>
+                    <span class="impact">"La libertad no es solo dinero, es tiempo."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Essentialism - Greg McKeown</strong>
+                    <p>Razón: Menos pero mejor.</p>
+                    <span class="impact">"Si no priorizas tu vida, alguien más lo hará."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Company of One - Paul Jarvis</strong>
+                    <p>Razón: Cuestiona el crecimiento por el crecimiento.</p>
+                    <span class="impact">"Lo suficiente es mejor que más."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Creative Selection - Ken Kocienda</strong>
+                    <p>Razón: Una mirada honesta al proceso creativo en Apple.</p>
+                    <span class="impact">"La creatividad es un proceso de refinamiento constante."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Steal Like an Artist - Austin Kleon</strong>
+                    <p>Razón: Todo es una mezcla de lo que ya existe.</p>
+                    <span class="impact">"Nada es original."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+                <li>
+                    <strong>Zero to One - Peter Thiel</strong>
+                    <p>Razón: Para pensar de manera diferente sobre el futuro.</p>
+                    <span class="impact">"El próximo Bill Gates no construirá un sistema operativo."</span>
+                    <a href="#">[LINK DE AFILIADO AQUÍ]</a>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <p>Espero que alguno de estos te sirva tanto como a mí. Leer no es la meta, actuar sí.</p>
+        </footer>
+    </article>
 </body>
 </html>
