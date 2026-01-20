@@ -1,5 +1,3 @@
-console.log("La vida de un creativo - Split Layout");
-
 document.addEventListener('DOMContentLoaded', () => {
     initCursor();
     initTheme();
