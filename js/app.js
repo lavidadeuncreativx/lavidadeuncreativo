@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     initCursor();
     initTheme();
@@ -6,7 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCursor() {
+    // Only init cursor on non-touch devices (coarse pointer usually means touch)
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        return;
+    }
+
     const cursor = document.querySelector('.cursor');
+    // Add class to body to indicate custom cursor is active (CSS will hide default cursor based on this)
+    document.body.classList.add('custom-cursor-active');
 
     // Create follower if not exists
     let follower = document.querySelector('.cursor-follower');
@@ -16,32 +24,44 @@ function initCursor() {
         document.body.appendChild(follower);
     }
 
-    document.addEventListener('mousemove', (e) => {
-        // Move main cursor (arrow) instantly or very fast
-        gsap.to(cursor, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0.05,
-            ease: "none"
-        });
+    // Use gsap.quickSetter for better performance
+    const setCursorX = gsap.quickSetter(cursor, "x", "px");
+    const setCursorY = gsap.quickSetter(cursor, "y", "px");
+    const setFollowerX = gsap.quickSetter(follower, "x", "px");
+    const setFollowerY = gsap.quickSetter(follower, "y", "px");
 
-        // Move liquid follower with delay
+    document.addEventListener('mousemove', (e) => {
+        // Instant update for main dot - using set directly avoids object creation overhead
+        setCursorX(e.clientX);
+        setCursorY(e.clientY);
+
+        // Smooth follow for the liquid circle
         gsap.to(follower, {
             x: e.clientX,
             y: e.clientY,
-            duration: 0.5,
-            ease: "power2.out"
+            duration: 0.6, // Slightly smoother/slower for liquid feel
+            ease: "power2.out",
+            overwrite: "auto" // Prevent conflict
         });
     });
 
+    // Handle interactive elements
     const hoverables = document.querySelectorAll('a, button, .hover-target');
     hoverables.forEach(el => {
         el.addEventListener('mouseenter', () => {
             follower.classList.add('active');
+            cursor.classList.add('hovered');
         });
         el.addEventListener('mouseleave', () => {
             follower.classList.remove('active');
+            cursor.classList.remove('hovered');
         });
+    });
+
+    // Ensure cursor is visible when moving mouse
+    document.addEventListener('mouseover', () => {
+        cursor.style.opacity = 1;
+        follower.style.opacity = 1;
     });
 }
 
