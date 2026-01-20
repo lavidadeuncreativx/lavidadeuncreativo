@@ -35,8 +35,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    cursor: none;
+    /* cursor: none;  REMOVED GLOBAL HIDE */
 }
+
 
 html {
     font-size: 16px;
@@ -50,14 +51,20 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: none;
-    /* Hide default cursor everywhere */
+    /* cursor: none; REMOVED GLOBAL HIDE */
+}
+
+/* Hide cursor ONLY if JS enabled it */
+body.custom-cursor-active,
+body.custom-cursor-active * {
+    cursor: none !important;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    cursor: none;
+    cursor: pointer;
+    /* Default to pointer unless custom cursor active */
 }
 
 /* Custom Cursor */
