@@ -5,14 +5,17 @@
     <title>La vida de un creativo | Israel Granados</title>
     <meta name="description" content="Archivo personal sobre el diseño de una vida creativa, sistemas e intención.">
 
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
+
 
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="La vida de un creativo | Israel Granados">
     <meta property="og:description" content="Archivo personal sobre el diseño de una vida creativa.">
     <meta property="og:image" content="https://lavidadeuncreativo.com/og-image.jpg">
+
 
     <!-- Google tag (gtag.js) -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
@@ -21,8 +24,10 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
+
         gtag('config', 'G-N8CH8RN1SW');
     </script>
+
 
     <!-- Vercel Analytics & Speed Insights -->
     <script>
@@ -31,222 +36,7 @@
     <script defer="" src="/_vercel/insights/script.js"></script>
     <script defer="" src="/_vercel/speed-insights/script.js"></script>
 
+
     <!-- Fonts: Inter for Helvetica-like feel. Bold weights. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css">
-    <style>
-        /* Cursor default style in case JS fails */
-        .cursor {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 10px;
-            background-color: var(--cursor-color, #000);
-            border-radius: 50%;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-        }
-
-        .cursor-follower {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 30px;
-            height: 30px;
-            background-color: rgba(var(--cursor-color-rgb, 0, 0, 0), 0.1);
-            border: 1px solid var(--cursor-color, #000);
-            border-radius: 50%;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
-        }
-    </style>
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-</head>
-
-<body>
-    
-
-    <div class="split-layout">
-        <!-- Left Column: Fixed Brand & Nav -->
-        <aside class="left-col">
-            <div class="brand-container">
-                <a href="index.html" class="hover-target" style="display: block;">
-                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
-                </a>
-                <p class="brand-subtitle">Archivo personal / Israel Granados</p>
-            </div>
-
-            <nav class="main-nav">
-                <a href="#about" class="nav-link hover-target">Inicio</a>
-                <a href="#blog" class="nav-link hover-target">Blog</a>
-                <a href="#templates" class="nav-link hover-target">Recursos</a>
-                <a href="#newsletter" class="nav-link hover-target">Newsletter</a>
-                <a href="#projects" class="nav-link hover-target">Sutura</a>
-            </nav>
-
-            <div class="left-footer">
-                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
-                <div class="socials">
-                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
-                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
-                    <a href="https://www.threads.com/@lavidadeuncreativo" target="_blank" class="hover-target">Threads</a>
-                    <a href="https://www.youtube.com/@lavidadeuncreativo" target="_blank" class="hover-target">YouTube</a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Right Column: Scrollable Content -->
-        <main class="right-col">
-            <section id="about" class="content-section">
-                <div class="section-header">
-                    <h2>01. Inicio</h2>
-                </div>
-                <div class="content-block">
-                    <h3 style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 2rem; line-height: 1.1; letter-spacing: -0.02em;">
-                        El arte de hacer que las cosas funcionen.
-                    </h3>
-                    <p class="intro-text" style="font-size: 1.3rem; line-height: 1.5; font-weight: 400;">
-                        Soy Israel y llevo más de 5 años diseñando sistemas y estrategias digitales para empresas y
-                        personas que buscan construir un negocio digital. Sigo viviendo entre dos mundos: un trabajo
-                        full-time y la necesidad constante de crear.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        Este es mi universe digital donde comparto todo lo caótico que puede llegar a ser la vida de un
-                        creativo y la belleza de la curva de aprendizaje. Aquí documento todo lo que aprendo, todo lo
-                        que creo, y todo lo que hago para crear sistemas y estrategias funcionales.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        Desde plantillas gratuitas, hasta asesoría personalizada.
-                    </p>
-                    <a href="mailto:hola@lavidadeuncreativo.com" class="hover-target" style="font-size: 1.3rem; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px;">
-                        ¿Tu estrategia digital no funciona? Trabajemos juntos →
-                    </a>
-                </div>
-            </section>
-
-            <section id="blog" class="content-section">
-                <div class="section-header">
-                    <h2>02. Blog</h2>
-                </div>
-                <div class="content-block" style="margin-bottom: 2rem;">
-                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5;">
-                        Artículos redactados por mí. Libres de IA, gluten free, de libre pastoreo y veganos. (Algo de
-                        aquí te servirá, estoy seguro).
-                    </p>
-                </div>
-                <div class="blog-list">
-                    <article class="blog-item hover-target" onclick="window.location.href='blog-post.html'">
-                        <span class="date">Lecturas</span>
-                        <h3>12 libros que cambiaron mi perspectiva</h3>
-                        <span class="arrow">↗</span>
-                    </article>
-                    <article class="blog-item hover-target" style="opacity: 0.5; pointer-events: none;">
-                        <span class="date">Ensayo</span>
-                        <h3>Sobre la paciencia</h3>
-                        <span class="arrow">Pronto</span>
-                    </article>
-                </div>
-            </section>
-
-            <section id="templates" class="content-section">
-                <div class="section-header">
-                    <h2>03. Recursos</h2>
-                </div>
-                <div class="content-block" style="margin-bottom: 3rem;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Herramientas Gratuitas</h3>
-                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;">
-                        El santo grial de herramientas que te ayudarán a mejorar tu estrategia digital, escalar tu
-                        producto/servicio, conseguir más clientes, o simplemente mejorar algún área de tu vida. (Tu
-                        tiempo es lo más valioso).
-                    </p>
-
-                    <div class="card hover-target" onclick="window.open('https://lavidadeuncreativx.notion.site/Task-Manager-Dashboard-Plantilla-2e8334aa15c180ec8fdaf798e10ba795?pvs=74', '_blank')" style="background: var(--text-color); color: var(--bg-color); cursor: pointer; border-radius: 4px;">
-                        <span class="card-type" style="color: var(--bg-color); opacity: 0.7;">Plantilla Gratuita</span>
-                        <h3 style="margin-top: 1rem; font-size: 1.5rem;">Descargar Template Notion</h3>
-                        <span class="arrow" style="align-self: flex-end;">→</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="newsletter" class="content-section">
-                <div class="section-header">
-                    <h2>04. Newsletter</h2>
-                </div>
-                <div class="content-block">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.1;">
-                        Actualizaciones semanales.
-                    </h3>
-                    <p class="intro-text" style="font-size: 1.1rem; line-height: 1.5;">
-                        Cada semana comparto una serie de actualizaciones sobre Inteligencia Artificial, Marketing, y
-                        Vida Personal. Consejos y noticias realmente útiles para facilitar tu vida/trabajo.
-                    </p>
-                    <p style="margin-top: 1rem; margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.7;">
-                        Solo para personas que quieren mejorar algún aspecto de su vida.
-                    </p>
-                    <div style="border-bottom: 1px solid var(--text-color); display: inline-flex; align-items: center; justify-content: space-between; width: 100%; max-width: 400px; padding-bottom: 0.5rem;">
-                        <span style="color: var(--secondary-text); font-style: italic;">Tu correo aquí</span>
-                        <span>→</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects" class="content-section">
-                <div class="section-header">
-                    <h2>05. Sutura</h2>
-                </div>
-                <div class="content-block" style="margin-bottom: 3rem;">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.1;">
-                        Menos clientes, menos caos.
-                    </h3>
-                    <p class="intro-text" style="font-size: 1.2rem; line-height: 1.5;">
-                        Si tienes un producto/servicio que no consigue los clientes o las ventas esperadas. Es muy
-                        probable que tengas una fuga en tu estrategia o sistema digital.
-                    </p>
-                </div>
-
-                <div class="grid-2-col" style="margin-bottom: 2rem; gap: 2rem;">
-                    <div class="content-block">
-                        <p style="margin-bottom: 1rem; font-weight: 500;">Deja de perder clientes.</p>
-                        <a href="mailto:hola@lavidadeuncreativo.com?subject=Quiero%20una%20asesor%C3%ADa" class="card hover-target" style="display: block; text-decoration: none; border: 1px solid var(--border-color); padding: 1.5rem;">
-                            <h3 style="margin: 0; font-size: 1.2rem;">Quiero una asesoría →</h3>
-                        </a>
-                    </div>
-                    <div class="content-block">
-                        <p style="margin-bottom: 1rem; font-weight: 500;">¿Tienes un proyecto en mente?</p>
-                        <a href="mailto:hola@lavidadeuncreativo.com?subject=Estrategia%20para%20mi%20negocio" class="card hover-target" style="display: block; text-decoration: none; border: 1px solid var(--border-color); padding: 1.5rem;">
-                            <h3 style="margin: 0; font-size: 1.2rem;">Quiero una estrategia para mi negocio →</h3>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="right-footer">
-                <p>© 2026 La vida de un creativo</p>
-                <p style="margin-top: 0.5rem; opacity: 0.5;">Hecho a mano.</p>
-            </footer>
-        </main>
-    </div>
-
-    <nav class="mobile-bottom-nav">
-        <a href="#about" class="active">Inicio</a>
-        <a href="#blog">Blog</a>
-        <a href="#templates">Recursos</a>
-        <a href="#projects">Sutura</a>
-    </nav>
-    <script src="js/app.js"></script>
-
-
-</body></html>
