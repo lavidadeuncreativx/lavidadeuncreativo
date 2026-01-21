@@ -62,43 +62,17 @@
                         Lecturas fundamentales para reprogramar tu mente y creatividad.
                     </p>
 
-                    <div class="book-recommendation"
-                        style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
-                        <div class="book-cover" style="flex: 0 0 200px; max-width: 200px;">
-                            <img src="assets/Silocreeslocreascover.png"
-                                alt="Portada del libro Si lo crees, lo creas de Brian Tracy"
-                                style="width: 100%; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: block;">
-                        </div>
-                        <div class="book-details" style="flex: 1; min-width: 280px;">
-                            <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem; line-height: 1.2;">Si lo crees, lo
-                                creas</h4>
-                            <p
-                                style="font-size: 1rem; color: var(--secondary-text); margin-bottom: 1.5rem; font-style: italic;">
-                                Brian Tracy</p>
-
-                            <p
-                                style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--secondary-text);">
-                                <strong>¿Por qué lo recomiendo?</strong><br>
-                                Este libro es un manual práctico para reprogramar tu mentalidad. Tracy desglosa cómo
-                                nuestras creencias limitantes son el único freno real hacia el éxito y ofrece
-                                herramientas tangibles para eliminarlas. No es solo motivación; es un sistema para
-                                cambiar tu autoimagen.
-                            </p>
-                            <p
-                                style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; color: var(--secondary-text);">
-                                <strong>¿Para quién es?</strong><br>
-                                Para creativos y emprendedores que sienten que tienen el talento pero se auto-sabotean.
-                                Si alguna vez has pensado "no soy lo suficientemente bueno" o te cuesta cobrar lo que
-                                vales, este libro es la pieza que te falta.
-                            </p>
-
-                            <button onclick="window.open('https://mercadolibre.com/sec/1ycPSYf', '_blank')"
-                                class="hover-target"
-                                style="background-color: #FFE600; color: #2D3277; border: none; padding: 1rem 2rem; font-size: 1rem; font-weight: 700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
-                                Comprar en Mercado Libre
-                                <span style="font-size: 1.2rem;">↗</span>
-                            </button>
-                        </div>
+                    <div class="books-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem;">
+                        <!-- Book Item -->
+                        <a href="book-si-lo-crees-lo-creas.html" class="book-item hover-target" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="book-cover-preview" style="margin-bottom: 1rem; transition: transform 0.3s ease;">
+                                <img src="assets/Silocreeslocreascover.jpg" 
+                                     alt="Si lo crees, lo creas" 
+                                     style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                            </div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.25rem;">Si lo crees, lo creas</h3>
+                            <p style="font-size: 0.9rem; color: var(--secondary-text);">Brian Tracy</p>
+                        </a>
                     </div>
                 </div>
             </section>
