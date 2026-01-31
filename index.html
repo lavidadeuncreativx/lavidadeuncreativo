@@ -1,1 +1,74 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>La vida de un creativo | Israel Granados</title>    <meta name="description" content="Archivo personal sobre el diseño de una vida creativa, sistemas e intención.">    <!-- Favicon -->    <link rel="icon" type="image/png" href="favicon.png">    <!-- Open Graph / SEO -->    <meta property="og:type" content="website">    <meta property="og:title" content="La vida de un creativo | Israel Granados">    <meta property="og:description" content="Archivo personal sobre el diseño de una vida creativa.">    <meta property="og:image" content="https://lavidadeuncreativo.com/og-image.jpg">    <!-- Google tag (gtag.js) -->    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>    <script>        window.dataLayer = window.dataLayer || [];        function gtag() { dataLayer.push(arguments); }        gtag('js', new Date());        gtag('config', 'G-N8CH8RN1SW');    </script>    <!-- Vercel Analytics & Speed Insights -->    <script>        window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };    </script>    <script defer src="/_vercel/insights/script.js"></script>    <script defer src="/_vercel/speed-insights/script.js"></script>    <!-- Fonts: Inter for Helvetica-like feel. Bold weights. -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La vida de un creativo | Israel Granados</title>
+    <meta name="description" content="Archivo personal sobre el diseño de una vida creativa, sistemas e intención.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="La vida de un creativo | Israel Granados">
+    <meta property="og:description" content="Archivo personal sobre el diseño de una vida creativa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="custom-cursor-active">
+    <div class="cursor"></div>
+    <div class="split-layout">
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+                <p class="brand-subtitle">Archivo personal / Israel Granados</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#about" class="nav-link hover-target">Inicio</a>
+                <a href="#blog" class="nav-link hover-target">Blog</a>
+                <a href="#templates" class="nav-link hover-target">Recursos</a>
+                <a href="#newsletter" class="nav-link hover-target">Newsletter</a>
+                <a href="#projects" class="nav-link hover-target">Sutura</a>
+            </nav>
+            <div class="left-footer">
+                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
+                <div class="socials">
+                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank" class="hover-target">Instagram</a>
+                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank" class="hover-target">LinkedIn</a>
+                </div>
+            </div>
+        </aside>
+        <main class="right-col">
+            <section id="about" class="content-section">
+                <div class="section-header"><h2>01. Inicio</h2></div>
+                <div class="content-block">
+                    <h3 style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 2rem; line-height: 1.1; letter-spacing: -0.02em;">El arte de hacer que las cosas funcionen.</h3>
+                    <p class="intro-text" style="font-size: 1.3rem; line-height: 1.5; font-weight: 400;">Soy Israel y llevo más de 5 años diseñando sistemas y estrategias digitales para empresas y personas que buscan construir un negocio digital.</p>
+                    <a href="diagnostico.html" class="hover-target" style="font-size: 1.3rem; font-weight: 500; text-decoration: underline;">¿Tu estrategia digital no funciona? Trabajemos juntos →</a>
+                </div>
+            </section>
+            <section id="blog" class="content-section">
+                <div class="section-header"><h2>02. Blog</h2></div>
+                <div class="blog-list">
+                    <article class="blog-item hover-target" onclick="window.location.href='blog-post.html'">
+                        <span class="date">Lecturas</span>
+                        <h3>12 libros que cambiaron mi perspectiva</h3>
+                        <span class="arrow">↗</span>
+                    </article>
+                </div>
+            </section>
+            <section id="templates" class="content-section">
+                <div class="section-header"><h2>03. Recursos</h2></div>
+                <div class="grid-2-col">
+                    <div class="card hover-target" onclick="window.location.href='templates.html'"><h3 style="font-size: 1.8rem;">Plantillas</h3><span class="arrow">→</span></div>
+                </div>
+            </section>
+            <footer class="right-footer"><p>© 2026 La vida de un creativo</p></footer>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
