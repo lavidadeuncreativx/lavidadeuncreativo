@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Si lo crees, lo creas | La vida de un creativo</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8CH8RN1SW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-N8CH8RN1SW');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="split-layout">
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+                <p class="brand-subtitle">Archivo personal / Israel Granados</p>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html#about" class="nav-link hover-target">Inicio</a>
+                <a href="index.html#blog" class="nav-link hover-target">Blog</a>
+                <a href="index.html#templates" class="nav-link hover-target active">Recursos</a>
+                <a href="index.html#newsletter" class="nav-link hover-target">Newsletter</a>
+                <a href="index.html#projects" class="nav-link hover-target">Sutura</a>
+            </nav>
+            <div class="left-footer">
+                <button onclick="toggleTheme()" class="theme-toggle hover-target">Cambiar mood</button>
+                <div class="socials">
+                    <a href="https://www.instagram.com/lavidadeuncreativo/" target="_blank"
+                        class="hover-target">Instagram</a>
+                    <a href="https://www.linkedin.com/in/lavidadeuncreativo/" target="_blank"
+                        class="hover-target">LinkedIn</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="right-col">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>Recursos / Libros</h2>
+                    <a href="books.html" class="hover-target"
+                        style="float: right; font-size: 0.9rem; text-decoration: underline;">← Volver</a>
+                </div>
+
+                <div class="content-block">
+                    <div class="book-recommendation"
+                        style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                        <div class="book-cover" style="flex: 0 0 200px; max-width: 200px;">
+                            <img src="assets/Silocreeslocreascover.jpg"
+                                alt="Portada del libro Si lo crees, lo creas de Brian Tracy"
+                                style="width: 100%; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: block;">
+                        </div>
+                        <div class="book-details" style="flex: 1; min-width: 280px;">
+                            <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem; line-height: 1.2;">Si lo crees, lo
+                                creas</h4>
+                            <p
+                                style="font-size: 1rem; color: var(--secondary-text); margin-bottom: 1.5rem; font-style: italic;">
+                                Brian Tracy</p>
+
+                            <p
+                                style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--secondary-text);">
+                                <strong>¿Por qué lo recomiendo?</strong><br>
+                                Este libro es un manual práctico para reprogramar tu mentalidad. Tracy desglosa cómo
+                                nuestras creencias limitantes son el único freno real hacia el éxito y ofrece
+                                herramientas tangibles para eliminarlas. No es solo motivación; es un sistema para
+                                cambiar tu autoimagen.
+                            </p>
+                            <p
+                                style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; color: var(--secondary-text);">
+                                <strong>¿Para quién es?</strong><br>
+                                Para creativos y emprendedores que sienten que tienen el talento pero se auto-sabotean.
+                                Si alguna vez has pensado "no soy lo suficientemente bueno" o te cuesta cobrar lo que
+                                vales, este libro es la pieza que te falta.
+                            </p>
+
+                            <button onclick="window.open('https://mercadolibre.com/sec/1ycPSYf', '_blank')"
+                                class="hover-target"
+                                style="background-color: #FFE600; color: #2D3277; border: none; padding: 1rem 2rem; font-size: 1rem; font-weight: 700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+                                Comprar en Mercado Libre
+                                <span style="font-size: 1.2rem;">↗</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
