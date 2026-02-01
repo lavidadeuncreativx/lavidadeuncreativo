@@ -29,6 +29,14 @@ export default async function handler(req, res) {
         return res.status(500).json({ message: 'Server Configuration Error: Missing Credentials' });
     }
 
+    // Input Validation
+    if (!focusType || !email || !fullName) {
+        return res.status(400).json({
+            message: 'Faltan campos obligatorios',
+            details: 'Asegúrate de seleccionar una opción (Marca Personal o Negocio) y llenar tus datos.'
+        });
+    }
+
     // Map fields based on Focus Type
     let section3Content = [];
 
