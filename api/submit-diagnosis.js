@@ -63,27 +63,25 @@ export default async function handler(req, res) {
             parent: { database_id: NOTION_DATABASE_ID },
             icon: { emoji: "📝" },
             properties: {
-                Name: {
+                "Nombre": {
                     title: [{ text: { content: fullName || 'Anonymous' } }]
                 },
-                Email: {
+                "Email": {
                     email: email
                 },
-                Phone: {
-                    // Attempting rich_text first as it's safer if unsure, but if it fails we see why
-                    // If user set it as 'Phone' type, this will fail.
+                "Teléfono": {
                     rich_text: [{ text: { content: whatsapp || '' } }]
                 },
-                Type: {
+                "Tipo": {
                     select: { name: focusType }
                 },
-                Objective: {
+                "Objetivo": {
                     select: { name: objective || 'Not Specified' }
                 },
-                Link: {
+                "Enlace": {
                     url: socialLink || null
                 },
-                Status: {
+                "Estado": {
                     status: { name: "New" }
                 }
             },
