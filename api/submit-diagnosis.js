@@ -4,22 +4,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const {
-        fullName,
-        email,
-        whatsapp,
-        socialLink,
-        focusType,
-        hardSkill,
-        personalAvatar,
-        personalPain,
-        differentiator,
-        starProduct,
-        businessAvatar,
-        marketGap,
-        infrastructure,
-        objective
-    } = req.body;
+    const body = req.body;
 
     // CREDENTIALS CHECK
     const NOTION_API_KEY = process.env.NOTION_API_KEY || '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';
@@ -30,69 +15,87 @@ export default async function handler(req, res) {
     }
 
     // Input Validation
-    if (!focusType || !email || !fullName) {
+    if (!body.focusType || !body.email || !body.fullName) {
         return res.status(400).json({
             message: 'Faltan campos obligatorios',
             details: 'Asegúrate de seleccionar una opción (Marca Personal o Negocio) y llenar tus datos.'
         });
     }
 
-    // Map fields based on Focus Type
-    let section3Content = [];
-
-    if (focusType === 'Marca Personal') {
-        section3Content = [
-            { heading_2: { rich_text: [{ text: { content: 'Marca Personal Details' } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Hard Skill: ${hardSkill || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Avatar: ${personalAvatar || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Pain Point: ${personalPain || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Differentiator: ${differentiator || '-'}` } }] } }
-        ];
-    } else {
-        section3Content = [
-            { heading_2: { rich_text: [{ text: { content: 'Negocio Establecido Details' } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Producto Estrella: ${starProduct || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Cliente Ideal: ${businessAvatar || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Brecha Mercado: ${marketGap || '-'}` } }] } },
-            { paragraph: { rich_text: [{ text: { content: `Infraestructura: ${infrastructure || '-'}` } }] } }
-        ];
-    }
+    // Prepare Data Object for User's Mapping
+    const data = {
+        nombre: body.fullName,
+        email: body.email,
+        whatsapp: body.whatsapp,
+        url: body.socialLink,
+        // Normalize "Negocio Establecido" to "Negocio" for consistency with user's logic
+        tipo: body.focusType === 'Negocio Establecido' ? 'Negocio' : body.focusType,
+        objetivo: body.objective,
+        // Personal
+        habilidad: body.hardSkill,
+        avatar: body.personalAvatar,
+        dolor: body.personalPain,
+        diferenciador: body.differentiator,
+        // Negocio
+        producto: body.starProduct,
+        cliente: body.businessAvatar,
+        problema_negocio: body.marketGap,
+        infraestructura: body.infrastructure
+    };
 
     try {
+        // --- USER PROVIDED MAPPING ---
         const payload = {
             parent: { database_id: NOTION_DATABASE_ID },
-            icon: { emoji: "📝" },
             properties: {
+                // --- 1. DATOS GENERALES ---
                 "Nombre": {
-                    title: [{ text: { content: fullName || 'Anonymous' } }]
+                    title: [{ text: { content: data.nombre || 'Anonymous' } }]
                 },
                 "Email": {
-                    email: email
+                    email: data.email
                 },
-                "Teléfono": {
-                    rich_text: [{ text: { content: whatsapp || '' } }]
+                "WhatsApp": {
+                    phone_number: data.whatsapp || null
                 },
-                "Tipo": {
-                    select: { name: focusType }
+                "Red_Social": {
+                    url: data.url || null
+                },
+                "Tipo_Perfil": {
+                    select: { name: data.tipo } // "Marca Personal" or "Negocio"
                 },
                 "Objetivo": {
-                    select: { name: objective || 'Not Specified' }
+                    select: { name: data.objetivo || 'Sin especificar' }
                 },
-                "Enlace": {
-                    url: socialLink || null
+
+                // --- 2. RAMA MARCA PERSONAL (Condicional) ---
+                "MP_Habilidad": {
+                    rich_text: [{ text: { content: data.tipo === "Marca Personal" ? (data.habilidad || "") : "" } }]
                 },
-                "Estado": {
-                    status: { name: "New" }
+                "MP_Avatar": {
+                    rich_text: [{ text: { content: data.tipo === "Marca Personal" ? (data.avatar || "") : "" } }]
+                },
+                "MP_Dolor": {
+                    rich_text: [{ text: { content: data.tipo === "Marca Personal" ? (data.dolor || "") : "" } }]
+                },
+                "MP_Diferenciador": {
+                    rich_text: [{ text: { content: data.tipo === "Marca Personal" ? (data.diferenciador || "") : "" } }]
+                },
+
+                // --- 3. RAMA NEGOCIO (Condicional) ---
+                "NEG_Producto": {
+                    rich_text: [{ text: { content: data.tipo === "Negocio" ? (data.producto || "") : "" } }]
+                },
+                "NEG_Cliente": {
+                    rich_text: [{ text: { content: data.tipo === "Negocio" ? (data.cliente || "") : "" } }]
+                },
+                "NEG_Problema": {
+                    rich_text: [{ text: { content: data.tipo === "Negocio" ? (data.problema_negocio || "") : "" } }]
+                },
+                "NEG_Infraestructura": {
+                    rich_text: [{ text: { content: data.tipo === "Negocio" ? (data.infraestructura || "") : "" } }]
                 }
-            },
-            children: [
-                {
-                    heading_1: {
-                        rich_text: [{ text: { content: 'Diagnóstico Submission' } }]
-                    }
-                },
-                ...section3Content
-            ]
+            }
         };
 
         const response = await fetch('https://api.notion.com/v1/pages', {
@@ -108,11 +111,10 @@ export default async function handler(req, res) {
         if (!response.ok) {
             const errorData = await response.json();
             console.error('Notion API Error:', errorData);
-            // Return the error details to the client for debugging
             return res.status(response.status).json({
                 message: 'Notion API Error',
                 details: errorData,
-                sentPayload: payload // debug info
+                sentPayload: payload
             });
         }
 
