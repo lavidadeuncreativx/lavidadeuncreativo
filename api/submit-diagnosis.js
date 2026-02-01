@@ -59,7 +59,7 @@ export default async function handler(req, res) {
                     phone_number: data.whatsapp || null
                 },
                 "Red_Social": {
-                    url: data.url || null
+                    rich_text: [{ text: { content: data.url || '' } }]
                 },
                 "Tipo_Perfil": {
                     select: { name: data.tipo } // "Marca Personal" or "Negocio"
