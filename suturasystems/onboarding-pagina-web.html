@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - Página Web | Sutura Systems</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="split-layout">
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="../index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link hover-target">← Volver a Sutura</a>
+            </nav>
+        </aside>
+
+        <main class="right-col">
+            <section class="content-section" style="padding-top: 4rem;">
+                <div class="content-block">
+                    <h2>Onboarding - Página Web</h2>
+                    <p>Hola!</p>
+                    <p>Gracias por dar este paso.</p>
+                    <p>Este formulario está diseñado para <strong>entender qué necesitas, para qué la necesitas y cómo
+                            debería funcionar tu página web</strong>.</p>
+                    <p>La idea no es solo diseñar algo visualmente atractivo, sino una web que tenga un objetivo claro y
+                        ayude a cumplirlo.</p>
+                    <hr>
+
+                    <form id="onboardingWebForm" class="diagnosis-form">
+                        <!-- ID -->
+                        <div class="form-group"><label>Nombre completo</label><input type="text" name="nombre_contacto"
+                                required></div>
+                        <div class="form-group"><label>Correo electrónico</label><input type="email" name="email"
+                                required></div>
+                        <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" required></div>
+                        <div class="form-group"><label>Nombre del proyecto, marca o negocio</label><input type="text"
+                                name="nombre_proyecto" required></div>
+                        <div class="form-group"><label>¿Tu proyecto es?</label>
+                            <select name="tipo_proyecto">
+                                <option value="Marca personal">Marca personal</option>
+                                <option value="Negocio / empresa">Negocio / empresa</option>
+                                <option value="Evento">Evento</option>
+                                <option value="Proyecto personal">Proyecto personal</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Tienes actualmente una página web?</label>
+                            <select name="tiene_web">
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si tienes web, compártenos el enlace</label><input type="url"
+                                name="url_actual"></div>
+
+                        <hr>
+                        <!-- OBJETIVO -->
+                        <h3>Quiero entender primero para qué necesitas esta página.</h3>
+                        <div class="form-group"><label>¿Cuál es el objetivo principal de tu página web?</label>
+                            <select name="objetivo_principal">
+                                <option value="Vender un producto o servicio">Vender un producto o servicio</option>
+                                <option value="Conseguir leads / contactos">Conseguir leads / contactos</option>
+                                <option value="Agendar citas o llamadas">Agendar citas o llamadas</option>
+                                <option value="Presentar mi marca / portafolio">Presentar mi marca / portafolio</option>
+                                <option value="Informar">Informar</option>
+                                <option value="Aún no lo tengo claro">Aún no lo tengo claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si esta página funcionara bien, ¿qué te gustaría que estuviera
+                                pasando en 3 meses?</label><textarea name="vision_3_meses" rows="2" required></textarea>
+                        </div>
+                        <div class="form-group"><label>¿Cómo sabríamos que la página fue un éxito?</label><textarea
+                                name="metricas_exito" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- OFERTA -->
+                        <h3>Ahora hablemos de tu oferta.</h3>
+                        <div class="form-group"><label>¿Qué ofreces principalmente a través de la web?</label>
+                            <select name="tipo_oferta">
+                                <option value="Servicio">Servicio</option>
+                                <option value="Producto digital">Producto digital</option>
+                                <option value="Producto físico">Producto físico</option>
+                                <option value="Asesoría / sesiones">Asesoría / sesiones</option>
+                                <option value="Aún no vendo">Aún no vendo</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Describe tu oferta principal en una o dos frases</label><textarea
+                                name="descripcion_oferta" rows="2" required></textarea></div>
+                        <div class="form-group"><label>Precio aproximado de lo que ofreces</label>
+                            <select name="precio_oferta">
+                                <option value="Gratis">Gratis</option>
+                                <option value="Bajo">Bajo</option>
+                                <option value="Medio">Medio</option>
+                                <option value="Alto">Alto</option>
+                                <option value="Aún no lo sé">Aún no lo sé</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- TARGET -->
+                        <h3>Ahora quiero entender a quién va dirigida la web.</h3>
+                        <div class="form-group"><label>¿A quién quieres que llegue esta página? (Cliente
+                                ideal)</label><textarea name="cliente_ideal" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué problema principal tiene esa persona cuando llega a tu
+                                web?</label><textarea name="problema_cliente" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué debería entender esa persona en los primeros 5 segundos al
+                                entrar?</label><textarea name="mensaje_clave" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué acción te gustaría que haga después de visitar la
+                                web?</label>
+                            <select name="call_to_action">
+                                <option value="Escribirme">Escribirme</option>
+                                <option value="Agendar llamada">Agendar llamada</option>
+                                <option value="Comprar">Comprar</option>
+                                <option value="Dejar sus datos">Dejar sus datos</option>
+                                <option value="Explorar">Explorar</option>
+                                <option value="Aún no lo tengo claro">Aún no lo tengo claro</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- CONTENIDO -->
+                        <h3>Ahora veamos el contenido y la estructura.</h3>
+                        <div class="form-group"><label>¿Qué secciones te gustaría que tenga la página?
+                                (Múltiple)</label>
+                            <select name="secciones_web" multiple style="height: 150px;">
+                                <option value="Inicio">Inicio</option>
+                                <option value="Servicios / productos">Servicios / productos</option>
+                                <option value="Sobre mí / nosotros">Sobre mí / nosotros</option>
+                                <option value="Testimonios">Testimonios</option>
+                                <option value="Portafolio">Portafolio</option>
+                                <option value="Blog">Blog</option>
+                                <option value="Contacto">Contacto</option>
+                                <option value="Agenda">Agenda</option>
+                                <option value="FAQ">FAQ</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Tienes textos listos o habría que construirlos desde
+                                cero?</label>
+                            <select name="estado_textos">
+                                <option value="Tengo textos">Tengo textos</option>
+                                <option value="Tengo ideas, pero no textos">Tengo ideas, pero no textos</option>
+                                <option value="Hay que construir todo">Hay que construir todo</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Tienes imágenes o recursos visuales?</label>
+                            <select name="recursos_visuales">
+                                <option value="Fotos profesionales">Fotos profesionales</option>
+                                <option value="Logo">Logo</option>
+                                <option value="Brandbook">Brandbook</option>
+                                <option value="Videos">Videos</option>
+                                <option value="Nada aún">Nada aún</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- ESTILO -->
+                        <h3>Hablemos de estilo y percepción.</h3>
+                        <div class="form-group"><label>¿Cómo te gustaría que se sienta tu página web? (Múltiple)</label>
+                            <select name="estilo_web" multiple style="height: 120px;">
+                                <option value="Profesional">Profesional</option>
+                                <option value="Cercana">Cercana</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Minimalista">Minimalista</option>
+                                <option value="Moderna">Moderna</option>
+                                <option value="Creativa">Creativa</option>
+                                <option value="Sobria">Sobria</option>
+                                <option value="Divertida">Divertida</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Hay colores que te gustaría usar?</label><input type="text"
+                                name="colores_gusto"></div>
+                        <div class="form-group"><label>¿Hay colores que NO te gustaría usar?</label><input type="text"
+                                name="colores_no"></div>
+                        <div class="form-group"><label>¿Qué páginas web te gustan y por qué? (Links)</label><textarea
+                                name="referencias_positivas" rows="2"></textarea></div>
+                        <div class="form-group"><label>¿Hay páginas web que NO te gusten y por qué?</label><textarea
+                                name="referencias_negativas" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- FUNCIONALIDAD -->
+                        <h3>Ahora pensemos en funcionalidad.</h3>
+                        <div class="form-group"><label>¿Qué te gustaría que la web haga por ti?</label><textarea
+                                name="funcionalidad_deseada" rows="2"
+                                placeholder="Ej: recibir mensajes, agendar, vender..."></textarea></div>
+                        <div class="form-group"><label>¿Necesitas alguna funcionalidad especial?</label><textarea
+                                name="funcionalidad_especial" rows="2"
+                                placeholder="Ej: pagos, agenda, integraciones..."></textarea></div>
+                        <div class="form-group"><label>¿Cómo te gustaría recibir los contactos o mensajes?</label>
+                            <select name="canal_contacto">
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Correo">Correo</option>
+                                <option value="CRM">CRM</option>
+                                <option value="No lo sé">No lo sé</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- TIEMPOS -->
+                        <h3>Hablemos de tiempos y expectativas.</h3>
+                        <div class="form-group"><label>¿Para cuándo te gustaría tener la página lista?</label>
+                            <select name="tiempo_entrega">
+                                <option value="Lo antes posible">Lo antes posible</option>
+                                <option value="2–3 semanas">2–3 semanas</option>
+                                <option value="1 mes">1 mes</option>
+                                <option value="Más de 1 mes">Más de 1 mes</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Este proyecto tiene alguna fecha importante
+                                asociada?</label><input type="text" name="fecha_limite"
+                                placeholder="Lanzamiento, evento..."></div>
+
+                        <hr>
+                        <!-- CIERRE -->
+                        <h3>Casi terminamos.</h3>
+                        <div class="form-group"><label>¿Qué es lo más importante para ti en esta página
+                                web?</label><textarea name="prioridad_proyecto" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué no te gustaría que pase con tu página web?</label><textarea
+                                name="anti_resultado" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Hay algo más que consideres importante?</label><textarea
+                                name="comentarios_extra" rows="2"></textarea></div>
+
+                        <button type="submit" id="submitBtn" class="submit-btn hover-target">Enviar</button>
+                        <p id="formStatus"
+                            style="margin-top: 1rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('onboardingWebForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            btn.disabled = true; btn.innerText = 'Enviando...';
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.type = 'onboarding-web';
+
+            const multiples = ['secciones_web', 'estilo_web'];
+            multiples.forEach(name => {
+                const selected = Array.from(this.querySelectorAll(`select[name="${name}"] option:checked`)).map(o => o.value);
+                data[name] = selected.join(', ');
+            });
+
+            try {
+                const res = await fetch('/api/submit-sutura', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    status.innerText = '¡Recibido! Vamos a crear algo genial.';
+                    status.style.color = 'green'; status.style.opacity = '1';
+                    btn.innerText = 'Enviado';
+                    this.reset();
+                } else { throw new Error('Error'); }
+            } catch (err) {
+                status.innerText = 'Error al enviar.';
+                status.style.color = 'red'; status.style.opacity = '1';
+                btn.disabled = false; btn.innerText = 'Enviar';
+            }
+        });
+    </script>
+</body>
+
+</html>

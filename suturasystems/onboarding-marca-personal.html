@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - Marca Personal | Sutura Systems</title>
+    <!-- Facivon & Fonts -->
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="split-layout">
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="../index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link hover-target">← Volver a Sutura</a>
+            </nav>
+        </aside>
+
+        <main class="right-col">
+            <section class="content-section" style="padding-top: 4rem;">
+                <div class="content-block">
+                    <h2>Onboarding - Marca Personal</h2>
+                    <p>Hola!</p>
+                    <p>Primero que nada, <strong>gracias por darte el espacio para responder este formulario</strong>.
+                    </p>
+                    <p>Dar el paso de construir (o mejorar) tu marca personal no es poca cosa. Muchas personas nunca
+                        llegan hasta aquí, y eso ya dice mucho de ti.</p>
+                    <p>Este formulario está pensado para <strong>entender a fondo tu contexto, tus objetivos, tu forma
+                            de pensar y tu visión</strong>.</p>
+                    <p>Respóndelo con calma y con honestidad. No hay respuestas correctas o incorrectas.</p>
+                    <p>Si alguna pregunta no aplica en tu caso, puedes escribir <em>“no aplica”</em> sin problema.</p>
+                    <hr>
+
+                    <form id="onboardingPersonalForm" class="diagnosis-form">
+                        <!-- BASICOS -->
+                        <h3>Empecemos por lo básico.</h3>
+                        <div class="form-group"><label>Nombre completo</label><input type="text" name="nombre" required>
+                        </div>
+                        <div class="form-group"><label>Correo electrónico</label><input type="email" name="email"
+                                required></div>
+                        <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" required></div>
+                        <div class="form-group"><label>¿En qué ciudad y país te encuentras?</label><input type="text"
+                                name="ciudad_pais" required></div>
+                        <div class="form-group"><label>¿Cuál es tu red social principal hoy? (Si tienes varias, pon la
+                                que más uses)</label><input type="text" name="red_principal" required></div>
+                        <div class="form-group"><label>Si tienes otras redes activas, compártelas aquí
+                                (opcional)</label><textarea name="otras_redes" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- PUNTO ACTUAL -->
+                        <h3>Ahora quiero entender tu punto actual.</h3>
+                        <div class="form-group"><label>Hoy, ¿a qué te dedicas?</label><textarea name="dedicacion"
+                                rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué parte de tu marca personal ya existe hoy? (Puedes elegir más
+                                de una)</label>
+                            <select name="estado_actual" multiple style="height: 120px;">
+                                <option value="Tengo redes activas">Tengo redes activas</option>
+                                <option value="Tengo página web o portafolio">Tengo página web o portafolio</option>
+                                <option value="Ya vendo algo">Ya vendo algo</option>
+                                <option value="Tengo comunidad">Tengo comunidad</option>
+                                <option value="Estoy empezando desde cero">Estoy empezando desde cero</option>
+                            </select>
+                            <small>Usa Ctrl/Cmd para seleccionar varias.</small>
+                        </div>
+                        <div class="form-group"><label>¿Qué sientes que hoy NO está funcionando en tu presencia digital
+                                o en tu marca?</label><textarea name="no_funciona" rows="3" required></textarea></div>
+                        <div class="form-group"><label>¿Has intentado antes trabajar tu marca personal? Si sí, ¿qué
+                                hiciste?</label><textarea name="intentos_previos" rows="3" required></textarea></div>
+
+                        <hr>
+                        <!-- INTENCION -->
+                        <h3>Ahora vayamos a la intención real.</h3>
+                        <div class="form-group"><label>¿Por qué quieres construir o mejorar tu marca personal en este
+                                momento de tu vida?</label><textarea name="por_que_ahora" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group"><label>Si este proceso funcionara bien, ¿qué te gustaría que estuviera
+                                pasando en 3 meses?</label><textarea name="vision_3_meses" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group"><label>¿Qué te gustaría lograr principalmente con tu marca
+                                personal?</label>
+                            <select name="objetivo_principal">
+                                <option value="Conseguir clientes">Conseguir clientes</option>
+                                <option value="Vender un servicio o producto">Vender un servicio o producto</option>
+                                <option value="Posicionarme como experta/o">Posicionarme como experta/o</option>
+                                <option value="Construir comunidad">Construir comunidad</option>
+                                <option value="Ordenar mi mensaje">Ordenar mi mensaje</option>
+                                <option value="Aún no lo tengo claro">Aún no lo tengo claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Cómo sabríamos que esto fue un éxito para ti?</label><textarea
+                                name="exito_metricas" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- AUDIENCIA -->
+                        <h3>Hablemos ahora de la gente a la que quieres atraer.</h3>
+                        <div class="form-group"><label>¿A qué tipo de personas te gustaría atraer con tu marca
+                                personal?</label><textarea name="target_persona" rows="3" required></textarea></div>
+                        <div class="form-group"><label>¿Qué problema principal tiene hoy esa persona?</label><textarea
+                                name="problema_target" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué crees que esa persona siente o piensa cuando busca ayuda o
+                                información?</label><textarea name="sentir_target" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué resultado le gustaría conseguir, aunque hoy no sepa
+                                exactamente cómo?</label><textarea name="resultado_deseado" rows="2"
+                                required></textarea></div>
+                        <div class="form-group"><label>¿Qué razones podría tener para NO comprarte o NO confiar en
+                                ti?</label><textarea name="objeciones" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- MONETIZACION -->
+                        <h3>Ahora pasemos a la parte de monetización.</h3>
+                        <div class="form-group"><label>Si alguien te escribiera mañana gracias a tu marca personal, ¿qué
+                                podrías ofrecerle hoy?</label>
+                            <select name="oferta_actual">
+                                <option value="Un servicio">Un servicio</option>
+                                <option value="Asesoría o sesiones">Asesoría o sesiones</option>
+                                <option value="Un producto digital">Un producto digital</option>
+                                <option value="Un producto físico">Un producto físico</option>
+                                <option value="Nada aún">Nada aún (quiero claridad primero)</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si tuvieras que poner un precio aproximado a eso, sería:</label>
+                            <select name="precio_oferta">
+                                <option value="Gratis">Gratis</option>
+                                <option value="Bajo">Bajo</option>
+                                <option value="Medio">Medio</option>
+                                <option value="Alto">Alto</option>
+                                <option value="Aún no lo sé">Aún no lo sé</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Cómo te llega hoy la gente interesada (si es que llega)?</label>
+                            <select name="canal_llegada">
+                                <option value="Recomendación">Recomendación</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Anuncios">Anuncios</option>
+                                <option value="Hoy no me llega gente">Hoy no me llega gente</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Cuando alguien se interesa, ¿qué suele pasar?</label>
+                            <select name="proceso_venta">
+                                <option value="Hablamos por DM">Hablamos por DM</option>
+                                <option value="Pasamos a WhatsApp">Pasamos a WhatsApp</option>
+                                <option value="Agendamos llamada">Agendamos llamada</option>
+                                <option value="Tengo página de ventas">Tengo página de ventas</option>
+                                <option value="No tengo proceso claro">No tengo proceso claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Cuál sientes que es hoy el mayor cuello de botella?</label>
+                            <select name="cuello_botella">
+                                <option value="No tengo claridad de mensaje">No tengo claridad de mensaje</option>
+                                <option value="Me falta contenido">Me falta contenido</option>
+                                <option value="Tengo contenido pero no convierte">Tengo contenido pero no convierte
+                                </option>
+                                <option value="No tengo sistema de seguimiento">No tengo sistema de seguimiento</option>
+                                <option value="Me cuesta vender">Me cuesta vender</option>
+                                <option value="Me falta tiempo">Me falta tiempo</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- POSICIONAMIENTO -->
+                        <h3>Quiero entender ahora tu posicionamiento y tu historia.</h3>
+                        <div class="form-group"><label>¿Por qué alguien debería escucharte a ti y no a otra
+                                persona?</label><textarea name="diferenciador" rows="2" required></textarea></div>
+                        <div class="form-group"><label>Menciona 3 fortalezas tuyas (habilidades reales)</label><textarea
+                                name="fortalezas" rows="2" required></textarea></div>
+                        <div class="form-group"><label>Menciona 3 temas de los que podrías hablar durante
+                                horas</label><textarea name="temas_pasion" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Hay alguna idea, postura o forma de ver las cosas que defiendes,
+                                aunque no todos estén de acuerdo?</label><textarea name="postura_unica" rows="2"
+                                required></textarea></div>
+                        <div class="form-group"><label>Cuéntame brevemente qué te trajo hasta aquí (Tu
+                                historia)</label><textarea name="historia" rows="3" required></textarea></div>
+
+                        <hr>
+                        <!-- CONTENIDO -->
+                        <h3>Ahora hablemos de contenido y visibilidad.</h3>
+                        <div class="form-group"><label>¿Qué tipo de contenido sientes que te sale más natural?
+                                (Selección múltiple)</label>
+                            <select name="tipo_contenido" multiple style="height: 120px;">
+                                <option value="Hablar a cámara">Hablar a cámara</option>
+                                <option value="Escribir">Escribir</option>
+                                <option value="Mostrar procesos">Mostrar procesos</option>
+                                <option value="Educativo">Educativo</option>
+                                <option value="Inspiracional">Inspiracional</option>
+                                <option value="Ninguno">Ninguno / me cuesta todo</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Qué tipo de contenido NO quieres hacer?</label><textarea
+                                name="contenido_no_deseado" rows="2" required></textarea></div>
+                        <div class="form-group"><label>De forma realista, ¿cuánto tiempo podrías dedicar a crear
+                                contenido por semana?</label>
+                            <select name="tiempo_contenido">
+                                <option value="1–2 horas">1–2 horas</option>
+                                <option value="3–5 horas">3–5 horas</option>
+                                <option value="6–10 horas">6–10 horas</option>
+                                <option value="Más de 10 horas">Más de 10 horas</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Qué es lo que más te frena para ser constante
+                                hoy?</label><textarea name="freno_constancia" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- VOZ Y PERSONALIDAD -->
+                        <h3>Ahora entremos a la voz y la personalidad de tu marca.</h3>
+                        <div class="form-group"><label>Elige 3 palabras que te gustaría que describieran tu marca
+                                personal</label><input type="text" name="palabras_clave" required></div>
+                        <div class="form-group"><label>Escribe algunas frases o ideas que sientas muy
+                                tuyas</label><textarea name="frases_propias" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Hay palabras, tonos o formas de comunicar que NO quieres usar
+                                jamás?</label><textarea name="anti_tono" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- VISUAL -->
+                        <h3>Pasemos a la parte visual.</h3>
+                        <div class="form-group"><label>¿Cómo te gustaría que se sintiera visualmente tu marca personal?
+                                (Selección múltiple)</label>
+                            <select name="estilo_visual" multiple style="height: 120px;">
+                                <option value="Minimalista">Minimalista</option>
+                                <option value="Editorial">Editorial</option>
+                                <option value="Colorida">Colorida</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Divertida">Divertida</option>
+                                <option value="Tecnológica">Tecnológica</option>
+                                <option value="Natural">Natural</option>
+                                <option value="Oscura / misteriosa">Oscura / misteriosa</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Hay colores que te atraigan mucho o con los que te
+                                identifiques?</label><input type="text" name="colores_gusto" required></div>
+                        <div class="form-group"><label>¿Hay colores que definitivamente NO te gustaría
+                                usar?</label><input type="text" name="colores_no" required></div>
+                        <div class="form-group"><label>En cuanto a tipografía, ¿qué estilo te gusta más?</label>
+                            <select name="tipografia">
+                                <option value="Elegante / editorial (serif)">Elegante / editorial (serif)</option>
+                                <option value="Moderna / limpia (sans)">Moderna / limpia (sans)</option>
+                                <option value="Mixta">Mixta</option>
+                                <option value="No lo tengo claro">No lo tengo claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Te gustaría que tu marca se apoye más en fotografía o
+                                ilustración?</label>
+                            <select name="apoyo_visual">
+                                <option value="Fotografía">Fotografía</option>
+                                <option value="Ilustración">Ilustración</option>
+                                <option value="Una mezcla">Una mezcla</option>
+                                <option value="No lo sé">No lo sé</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si tienes referencias visuales (Pinterest, Instagram, webs),
+                                compártelas aquí</label><textarea name="referencias_visuales" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- REFERENCIAS -->
+                        <h3>Ahora veamos referencias y comparativos.</h3>
+                        <div class="form-group"><label>Menciona 3 marcas personales que te gusten y explica por
+                                qué</label><textarea name="referencias_positivas" rows="3" required></textarea></div>
+                        <div class="form-group"><label>Menciona 3 marcas personales que NO te gusten y explica por
+                                qué</label><textarea name="referencias_negativas" rows="3" required></textarea></div>
+                        <div class="form-group"><label>¿Hay personas que consideres “similares” a ti?
+                                (Links)</label><textarea name="competencia_similares" rows="2"></textarea></div>
+                        <div class="form-group"><label>¿En qué crees que te pareces a ellas y en qué te gustaría
+                                diferenciarte?</label><textarea name="diferencia_competencia" rows="3"
+                                required></textarea></div>
+
+                        <hr>
+                        <!-- EXPERIENCIA -->
+                        <h3>Quiero entender ahora la experiencia que quieres dar.</h3>
+                        <div class="form-group"><label>Si alguien te escribe o entra en contacto contigo, ¿qué te
+                                gustaría que pasara después?</label>
+                            <select name="experiencia_contacto">
+                                <option value="Conversación por DM">Conversación por DM</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Llamada">Llamada</option>
+                                <option value="Página y compra directa">Página y compra directa</option>
+                                <option value="Prefiero que tú diseñes el sistema">Prefiero que tú diseñes el sistema
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Después de interactuar contigo, ¿qué te gustaría que esa persona
+                                sintiera?</label><textarea name="feeling_cliente" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué NO te gustaría que pasara jamás con tus clientes o
+                                seguidores?</label><textarea name="anti_experiencia" rows="2" required></textarea></div>
+
+                        <hr>
+                        <!-- CIERRE -->
+                        <h3>Casi terminamos. Vamos a lo más humano.</h3>
+                        <div class="form-group"><label>¿Qué es lo que más te da miedo o te incomoda al exponerte o
+                                vender?</label><textarea name="miedos" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Qué crees que te ayudaría a no abandonar este proceso a la
+                                mitad?</label><textarea name="motivacion" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Hay algo más importante que quieras decirme?</label><textarea
+                                name="comentarios_extra" rows="3"></textarea></div>
+
+                        <button type="submit" id="submitBtn" class="submit-btn hover-target">Enviar</button>
+                        <p id="formStatus"
+                            style="margin-top: 1rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script para envío -->
+    <script>
+        document.getElementById('onboardingPersonalForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            btn.disabled = true; btn.innerText = 'Enviando...';
+
+            // Gather all form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.type = 'onboarding-personal'; // Identify form type
+
+            // Handle multiple selects manually if needed, usually simple entries only takes last value
+            // Since we used native FormData validation, we trust it for now.
+            // For multiple selects, we need to gather all values.
+            const multiples = ['estado_actual', 'tipo_contenido', 'estilo_visual'];
+            multiples.forEach(name => {
+                const selected = Array.from(this.querySelectorAll(`select[name="${name}"] option:checked`)).map(o => o.value);
+                data[name] = selected.join(', ');
+            });
+
+            try {
+                const res = await fetch('/api/submit-sutura', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    status.innerText = '¡Recibido! Gracias por tu tiempo.';
+                    status.style.color = 'green'; status.style.opacity = '1';
+                    btn.innerText = 'Enviado';
+                    this.reset();
+                } else { throw new Error('Error'); }
+            } catch (err) {
+                status.innerText = 'Error al enviar.';
+                status.style.color = 'red'; status.style.opacity = '1';
+                btn.disabled = false; btn.innerText = 'Enviar';
+            }
+        });
+    </script>
+</body>
+
+</html>

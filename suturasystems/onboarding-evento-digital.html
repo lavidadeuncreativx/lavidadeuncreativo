@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - Invitación Digital | Sutura Systems</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="split-layout">
+        <aside class="left-col">
+            <div class="brand-container">
+                <a href="../index.html" class="hover-target" style="display: block;">
+                    <h1 class="main-title hover-target">La vida de un<br>creativo.</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link hover-target">← Volver a Sutura</a>
+            </nav>
+        </aside>
+
+        <main class="right-col">
+            <section class="content-section" style="padding-top: 4rem;">
+                <div class="content-block">
+                    <h2>Onboarding - Invitación Digital para Eventos</h2>
+                    <p>Hola!</p>
+                    <p>Gracias por escribirnos y felicidades por tu evento ✨</p>
+                    <p>Este formulario está pensado para <strong>entender tu evento, tu estilo y lo que
+                            necesitas</strong>, y así poder diseñar una invitación digital clara, bonita y funcional
+                        para ti y tus invitados.</p>
+                    <p>Respóndelo con calma.</p>
+                    <hr>
+
+                    <form id="onboardingEventoForm" class="diagnosis-form">
+                        <!-- ID -->
+                        <div class="form-group"><label>Nombre Completo</label><input type="text" name="nombre_contacto"
+                                required></div>
+                        <div class="form-group"><label>Correo electrónico</label><input type="email" name="email"
+                                required></div>
+                        <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" required></div>
+
+                        <hr>
+                        <!-- EVENTO -->
+                        <h3>Ahora cuéntanos sobre tu evento.</h3>
+                        <div class="form-group"><label>¿Qué tipo de evento es?</label>
+                            <select name="tipo_evento">
+                                <option value="Boda">Boda</option>
+                                <option value="XV años">XV años</option>
+                                <option value="Cumpleaños">Cumpleaños</option>
+                                <option value="Evento corporativo">Evento corporativo</option>
+                                <option value="Otro">Otro (especifica)</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Nombre(s) de la(s) persona(s) protagonista(s) del
+                                evento</label><input type="text" name="protagonistas" required
+                                placeholder="Ej. nombres de los novios, festejada/o..."></div>
+                        <div class="form-group"><label>Fecha del evento</label><input type="text" name="fecha_evento"
+                                required></div>
+                        <div class="form-group"><label>Ciudad y país donde se realizará</label><input type="text"
+                                name="ubicacion" required></div>
+
+                        <hr>
+                        <!-- CONCEPTO -->
+                        <h3>Queremos entender cómo imaginas tu evento.</h3>
+                        <div class="form-group"><label>Si tuvieras que describir el evento en pocas palabras, ¿cómo
+                                sería?</label><textarea name="descripcion_evento" rows="2"
+                                placeholder="Ej. elegante, relajado, moderno..."></textarea></div>
+                        <div class="form-group"><label>¿Qué te gustaría que sientan tus invitados al recibir la
+                                invitación?</label><textarea name="feeling_invitacion" rows="2" required></textarea>
+                        </div>
+                        <div class="form-group"><label>¿Hay algún concepto, tema o idea que ya tengas en
+                                mente?</label><textarea name="concepto_tema" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- PRACTICO -->
+                        <h3>Ahora vamos a lo práctico.</h3>
+                        <div class="form-group"><label>¿Qué te gustaría que incluya la invitación digital?
+                                (Múltiple)</label>
+                            <select name="secciones_invitacion" multiple style="height: 180px;">
+                                <option value="Información general del evento">Información general del evento</option>
+                                <option value="Ubicación con mapa">Ubicación con mapa</option>
+                                <option value="Confirmación de asistencia (RSVP)">Confirmación de asistencia (RSVP)
+                                </option>
+                                <option value="Mesa de regalos">Mesa de regalos</option>
+                                <option value="Donaciones">Donaciones</option>
+                                <option value="Itinerario del evento">Itinerario del evento</option>
+                                <option value="Código de vestimenta">Código de vestimenta</option>
+                                <option value="Galería de fotos">Galería de fotos</option>
+                                <option value="Información de hospedaje">Información de hospedaje</option>
+                                <option value="Información de transporte">Información de transporte</option>
+                                <option value="Mensajes especiales">Mensajes especiales</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- INVITADOS -->
+                        <h3>Hablemos de los invitados.</h3>
+                        <div class="form-group"><label>¿Aproximadamente cuántos invitados esperas?</label>
+                            <select name="cantidad_invitados">
+                                <option value="Menos de 50">Menos de 50</option>
+                                <option value="50 a 100">50 a 100</option>
+                                <option value="100 a 200">100 a 200</option>
+                                <option value="Más de 200">Más de 200</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Te gustaría poder llevar control de confirmaciones de
+                                asistencia?</label>
+                            <select name="control_rsvp">
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="No estoy seguro/a">No estoy seguro/a</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Necesitas que la invitación distinga tipos de
+                                invitados?</label><input type="text" name="tipos_invitados"
+                                placeholder="Ej. adultos/niños, ceremonia/fiesta..."></div>
+
+                        <hr>
+                        <!-- REGALOS -->
+                        <h3>Ahora sobre mesa de regalos o donaciones.</h3>
+                        <div class="form-group"><label>¿Te gustaría incluir una mesa de regalos o donaciones?</label>
+                            <select name="tipo_regalos">
+                                <option value="Mesa de regalos">Mesa de regalos</option>
+                                <option value="Donaciones en efectivo">Donaciones en efectivo</option>
+                                <option value="Ambas">Ambas</option>
+                                <option value="Ninguna">Ninguna</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si ya tienes algo definido (tienda, banco, plataforma), cuéntanos
+                                cuál</label><input type="text" name="detalles_regalos"></div>
+
+                        <hr>
+                        <!-- VISUAL -->
+                        <h3>Vamos con el estilo visual.</h3>
+                        <div class="form-group"><label>¿Qué estilo visual te gusta más para la invitación?</label>
+                            <select name="estilo_visual">
+                                <option value="Elegante / clásico">Elegante / clásico</option>
+                                <option value="Moderno / minimalista">Moderno / minimalista</option>
+                                <option value="Romántico">Romántico</option>
+                                <option value="Divertido">Divertido</option>
+                                <option value="Colorido">Colorido</option>
+                                <option value="Sobrio">Sobrio</option>
+                                <option value="No lo tengo claro">No lo tengo claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Hay colores que te gustaría usar?</label><input type="text"
+                                name="colores_gusto"></div>
+                        <div class="form-group"><label>¿Hay colores que NO te gustaría usar?</label><input type="text"
+                                name="colores_no"></div>
+                        <div class="form-group"><label>¿Te gustaría usar fotografías en la invitación?</label>
+                            <select name="uso_fotos">
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="Tal vez">Tal vez</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Si tienes referencias visuales (Pinterest, Instagram, webs),
+                                compártelas aquí</label><textarea name="referencias_visuales" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- EXPERIENCIA INVITADO -->
+                        <h3>Ahora pensemos en la experiencia del invitado.</h3>
+                        <div class="form-group"><label>Cuando alguien abra la invitación, ¿qué te gustaría que pase
+                                primero?</label><textarea name="experiencia_apertura" rows="2"
+                                placeholder="Ej. mensaje emocional, video..."></textarea></div>
+                        <div class="form-group"><label>¿Hay algún mensaje especial que quieras incluir?</label><textarea
+                                name="mensaje_especial" rows="2"></textarea></div>
+                        <div class="form-group"><label>¿Qué cosas NO te gustaría que aparezcan en la
+                                invitación?</label><textarea name="anti_contenido" rows="2"></textarea></div>
+
+                        <hr>
+                        <!-- LOGISTICA -->
+                        <h3>Sobre logística y tiempos.</h3>
+                        <div class="form-group"><label>¿Cuándo te gustaría que la invitación esté lista?</label>
+                            <select name="tiempo_entrega">
+                                <option value="Lo antes posible">Lo antes posible</option>
+                                <option value="En 1–2 semanas">En 1–2 semanas</option>
+                                <option value="En 3–4 semanas">En 3–4 semanas</option>
+                                <option value="Tengo una fecha específica">Tengo una fecha específica</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>¿Planeas enviar la invitación por:</label>
+                            <select name="metodo_envio">
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Correo">Correo</option>
+                                <option value="Redes sociales">Redes sociales</option>
+                                <option value="Todas">Todas</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <!-- CIERRE -->
+                        <h3>Casi terminamos.</h3>
+                        <div class="form-group"><label>¿Qué es lo más importante para ti en este
+                                proyecto?</label><textarea name="prioridad_proyecto" rows="2" required></textarea></div>
+                        <div class="form-group"><label>¿Hay algo que te preocupe o que no quieras que salga
+                                mal?</label><textarea name="preocupaciones" rows="2"></textarea></div>
+                        <div class="form-group"><label>¿Hay algo más que consideres importante?</label><textarea
+                                name="comentarios_extra" rows="2"></textarea></div>
+
+                        <button type="submit" id="submitBtn" class="submit-btn hover-target">Enviar</button>
+                        <p id="formStatus"
+                            style="margin-top: 1rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;"></p>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('onboardingEventoForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            btn.disabled = true; btn.innerText = 'Enviando...';
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.type = 'onboarding-event';
+
+            const multiples = ['secciones_invitacion'];
+            multiples.forEach(name => {
+                const selected = Array.from(this.querySelectorAll(`select[name="${name}"] option:checked`)).map(o => o.value);
+                data[name] = selected.join(', ');
+            });
+
+            try {
+                const res = await fetch('/api/submit-sutura', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (res.ok) {
+                    status.innerText = '¡Recibido! Estaremos diseñando tu invitación pronto.';
+                    status.style.color = 'green'; status.style.opacity = '1';
+                    btn.innerText = 'Enviado';
+                    this.reset();
+                } else { throw new Error('Error'); }
+            } catch (err) {
+                status.innerText = 'Error al enviar.';
+                status.style.color = 'red'; status.style.opacity = '1';
+                btn.disabled = false; btn.innerText = 'Enviar';
+            }
+        });
+    </script>
+</body>
+
+</html>
