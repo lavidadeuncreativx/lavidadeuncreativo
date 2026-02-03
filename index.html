@@ -210,33 +210,61 @@
 
             <section id="projects" class="content-section">
                 <div class="section-header">
-                    <h2>05. Sutura</h2>
+                    <h2>05. Trabajemos Juntos</h2>
                 </div>
-                <div class="content-block" style="margin-bottom: 3rem;">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.1;">
-                        Menos clientes, menos caos.
-                    </h3>
-                    <p class="intro-text" style="font-size: 1.2rem; line-height: 1.5;">
-                        Si tienes un producto/servicio que no consigue los clientes o las ventas esperadas. Es muy
-                        probable que tengas una fuga en tu estrategia o sistema digital.
+                <div class="content-block">
+                    <p class="intro-text">
+                        Bienvenido a Sutura Systems.
                     </p>
-                </div>
+                    <p>
+                        La agencia que diseña estrategias y sistemas para tu negocio o marca personal.
+                        Démosle orden al proyecto que tienes en mente.
+                    </p>
+                    <p style="margin-bottom: 2rem;">
+                        Llena el formulario para entender <strong>quién eres</strong> y <strong>cómo podemos
+                            ayudarte</strong>.<br>
+                        No toma más de un minuto.
+                    </p>
 
-                <div class="grid-2-col" style="margin-bottom: 2rem; gap: 2rem;">
-                    <div class="content-block">
-                        <p style="margin-bottom: 1rem; font-weight: 500;">Deja de perder clientes.</p>
-                        <a href="diagnostico.html" class="card hover-target"
-                            style="display: block; text-decoration: none; border: 1px solid var(--border-color); padding: 1.5rem;">
-                            <h3 style="margin: 0; font-size: 1.2rem;">Quiero una asesoría →</h3>
-                        </a>
-                    </div>
-                    <div class="content-block">
-                        <p style="margin-bottom: 1rem; font-weight: 500;">¿Tienes un proyecto en mente?</p>
-                        <a href="diagnostico.html" class="card hover-target"
-                            style="display: block; text-decoration: none; border: 1px solid var(--border-color); padding: 1.5rem;">
-                            <h3 style="margin: 0; font-size: 1.2rem;">Quiero una estrategia para mi negocio →</h3>
-                        </a>
-                    </div>
+                    <form id="suturaHomeForm" class="diagnosis-form">
+                        <div class="form-section">
+                            <div class="form-group">
+                                <label for="fullNameHome">Nombre completo</label>
+                                <input type="text" id="fullNameHome" name="fullName" required class="hover-target">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emailHome">Correo electrónico</label>
+                                <input type="email" id="emailHome" name="email" required class="hover-target">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="whatsappHome">WhatsApp</label>
+                                <input type="tel" id="whatsappHome" name="whatsapp" required class="hover-target">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="helpTypeHome">¿Con qué te gustaría recibir ayuda hoy?</label>
+                                <select id="helpTypeHome" name="helpType" required class="hover-target">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="Marca Personal">Quiero crear o mejorar mi marca personal</option>
+                                    <option value="Negocio">Tengo un negocio y quiero más clientes / ventas</option>
+                                    <option value="Eventos">Quiero una invitación digital para un evento</option>
+                                    <option value="Web">Necesito una página web que convierta</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notesHome">Cuéntame brevemente qué tienes en mente (Opcional)</label>
+                                <textarea id="notesHome" name="notes" rows="3" class="hover-target"
+                                    placeholder="1–2 líneas si quieres"></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtnHome" class="submit-btn hover-target">Enviar</button>
+                            <p id="formStatusHome"
+                                style="margin-top: 1rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;"></p>
+                        </div>
+                    </form>
                 </div>
             </section>
 
@@ -254,6 +282,51 @@
         <a href="suturasystems/">Trabajemos Juntos</a>
     </nav>
     <script src="js/app.js"></script>
+    <script>
+        document.getElementById('suturaHomeForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtnHome');
+            const status = document.getElementById('formStatusHome');
+
+            btn.disabled = true;
+            btn.innerText = 'Enviando...';
+            status.style.opacity = '0';
+
+            const formData = {
+                type: 'lead-magnet',
+                fullName: document.getElementById('fullNameHome').value,
+                email: document.getElementById('emailHome').value,
+                whatsapp: document.getElementById('whatsappHome').value,
+                helpType: document.getElementById('helpTypeHome').value,
+                notes: document.getElementById('notesHome').value
+            };
+
+            try {
+                const res = await fetch('/api/submit-sutura', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (res.ok) {
+                    status.innerText = '¡Recibido! Nos pondremos en contacto contigo.';
+                    status.style.color = 'green';
+                    status.style.opacity = '1';
+                    btn.innerText = 'Enviado';
+                    this.reset();
+                } else {
+                    throw new Error('Error de envío');
+                }
+            } catch (err) {
+                console.error(err);
+                status.innerText = 'Hubo un error. Intenta de nuevo.';
+                status.style.color = 'red';
+                status.style.opacity = '1';
+                btn.disabled = false;
+                btn.innerText = 'Enviar';
+            }
+        });
+    </script>
 </body>
 
 </html>
