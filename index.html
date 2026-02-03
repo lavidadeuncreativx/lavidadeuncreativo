@@ -315,10 +315,12 @@
                     btn.innerText = 'Enviado';
                     this.reset();
                 } else {
-                    throw new Error('Error de envío');
+                    const errorData = await res.json();
+                    console.error('Submission Error:', errorData);
+                    throw new Error('Error de servidor');
                 }
             } catch (err) {
-                console.error(err);
+                console.error('Network/Client Error:', err);
                 status.innerText = 'Hubo un error. Intenta de nuevo.';
                 status.style.color = 'red';
                 status.style.opacity = '1';

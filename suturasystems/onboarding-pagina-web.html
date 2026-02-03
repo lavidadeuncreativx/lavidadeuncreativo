@@ -266,8 +266,13 @@
                     status.style.color = 'green'; status.style.opacity = '1';
                     btn.innerText = 'Enviado';
                     this.reset();
-                } else { throw new Error('Error'); }
+                } else {
+                    const errorData = await res.json();
+                    console.error('Submission Error:', errorData);
+                    throw new Error('Error de servidor');
+                }
             } catch (err) {
+                console.error('Network/Client Error:', err);
                 status.innerText = 'Error al enviar.';
                 status.style.color = 'red'; status.style.opacity = '1';
                 btn.disabled = false; btn.innerText = 'Enviar';
