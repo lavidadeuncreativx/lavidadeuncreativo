@@ -1,25 +1,33 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { questions } from '../data/questions';
 import { TextInput, SelectInput, MultiSelectInput } from './InputTypes';
 
 export default function Typeform() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [answers, setAnswers] = useState<Record<string, any>>({});
+    const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
-    const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const currentQuestion = questions[currentIndex];
+    // Calculate progress immediately based on current index
+    const progress = ((currentIndex + 1) / questions.length) * 100;
 
-    // Calculate progress
-    const progress = ((currentIndex) / questions.length) * 100;
+    useEffect(() => {
+        // Scroll to top or focus handling
+        if (containerRef.current) {
+            containerRef.current.focus();
+        }
+    }, [currentIndex]);
 
     const handleAnswer = (value: any) => {
         setAnswers(prev => ({
             ...prev,
-            [currentQuestion.id]: value
+            [currentQuestion.apiField]: value
         }));
     };
 
@@ -42,140 +50,152 @@ export default function Typeform() {
     const submitForm = async () => {
         setIsSubmitting(true);
         try {
-            // Prepare payload mapping answers to apiFields
-            const payload: Record<string, any> = {};
-
-            questions.forEach(q => {
-                const answer = answers[q.id];
-                if (answer) {
-                    payload[q.apiField] = answer;
-                }
-            });
-
-            const response = await fetch('/api/submit', {
+            const res = await fetch('/api/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(answers),
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to submit');
-            }
-
+            if (!res.ok) throw new Error('Error al enviar');
             setIsCompleted(true);
         } catch (error) {
             console.error(error);
-            alert('Hubo un error al enviar tus respuestas. Por favor intenta de nuevo.');
+            alert('Hubo un error al enviar tus respuestas');
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-        // Navigate with arrows ?? Maybe conflicting with inputs. 
-        // Typeform usually uses Enter to go next. 
-        // We strictly use Enter in inputs. 
-        // We could allow Up/Down for navigating previously answered questions?
+    // Listen for "Enter" to go next (except for textarea usually)
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                nextQuestion();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [currentIndex]);
+
+    const slideVariants = {
+        enter: (direction: string) => ({
+            y: direction === 'forward' ? 50 : -50,
+            opacity: 0
+        }),
+        center: {
+            y: 0,
+            opacity: 1
+        },
+        exit: (direction: string) => ({
+            y: direction === 'forward' ? -50 : 50,
+            opacity: 0
+        })
     };
 
     if (isCompleted) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen text-center p-6 fade-in max-w-2xl mx-auto">
-                <h1 className="text-4xl font-bold mb-6 text-[var(--accent)]">¡Gracias por tomarte el tiempo!</h1>
-                <p className="text-xl mb-8">
-                    Ya tenemos lo que necesitamos para conocerte mejor. En los próximos días te buscaremos para platicar los pasos a seguir y ayudarte a aterrizar tu marca personal. ¡Esto apenas comienza!
+            <div className="flex flex-col items-center justify-center min-h-screen text-center p-8 fade-in">
+                <h2 className="text-4xl font-bold mb-4text-[var(--primary)]">
+                    ¡Gracias por completar el diagnóstico!
+                </h2>
+                <p className="text-[var(--text-muted)] text-xl max-w-lg">
+                    Hemos recibido toda tu información. Analizaremos tu perfil y te contactaremos pronto para dar el siguiente paso.
                 </p>
             </div>
         );
     }
 
-    if (isSubmitting) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-screen">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[var(--accent)]"></div>
-                <p className="mt-4 text-xl">Enviando respuestas...</p>
-            </div>
-        );
-    }
-
     return (
-        <div className="min-h-screen flex flex-col relative w-full">
+        <div className="w-full max-w-3xl mx-auto px-6 py-12 flex flex-col min-h-screen justify-center relative z-10" ref={containerRef}>
+
+            {/* Brand Watermark */}
+            <div className="absolute top-8 left-6 md:left-0 flex items-center gap-2 opacity-30 pointer-events-none">
+                <span className="font-bold tracking-widest uppercase text-xs text-[var(--primary)]">Sutura Systems</span>
+            </div>
+
             {/* Progress Bar */}
-            <div className="progress-bar-container">
+            <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
                 <div
-                    className="progress-bar"
+                    className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_15px_var(--primary)]"
                     style={{ width: `${progress}%` }}
                 />
             </div>
 
-            {/* Main Content */}
-            <div className="flex-1 flex flex-col justify-center items-center p-6 container w-full max-w-4xl mx-auto">
-                <div
-                    key={currentQuestion.id}
-                    className="w-full flex flex-col gap-6 fade-in"
+            <AnimatePresence mode="popLayout" custom={direction}>
+                <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                    className="w-full"
                 >
-                    {/* Question Text */}
-                    <div className="flex flex-col gap-2 mb-8">
-                        <div className="flex items-center gap-4 text-[var(--accent)] text-sm font-bold uppercase tracking-widest mb-2">
-                            <span>Pregunta {currentIndex + 1} de {questions.length}</span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+                    <div className="mb-8">
+                        <span className="text-[var(--primary)] font-mono text-sm tracking-widest uppercase">
+                            {currentIndex + 1} <span className="text-white/30">/</span> {questions.length}
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 leading-tight text-white tracking-tight">
                             {currentQuestion.text}
                         </h2>
                         {currentQuestion.description && (
-                            <p className="text-lg md:text-xl text-[var(--text-muted)] mt-2">
+                            <p className="text-xl text-[var(--text-muted)] font-light leading-relaxed">
                                 {currentQuestion.description}
                             </p>
                         )}
                     </div>
 
-                    {/* Input Component */}
-                    <div className="w-full">
+                    <div className="min-h-[200px]">
                         {currentQuestion.type === 'text' && (
                             <TextInput
-                                question={currentQuestion}
-                                value={answers[currentQuestion.id]}
+                                value={answers[currentQuestion.apiField] || ''}
                                 onChange={handleAnswer}
                                 onEnter={nextQuestion}
+                                autoFocus
                             />
                         )}
+
                         {currentQuestion.type === 'select' && (
                             <SelectInput
-                                question={currentQuestion}
-                                value={answers[currentQuestion.id]}
-                                onChange={handleAnswer}
-                                onEnter={nextQuestion}
+                                options={currentQuestion.options || []}
+                                value={answers[currentQuestion.apiField]}
+                                onChange={(val) => {
+                                    handleAnswer(val);
+                                    setTimeout(nextQuestion, 400); // Auto advance
+                                }}
                             />
                         )}
+
                         {currentQuestion.type === 'multi-select' && (
                             <MultiSelectInput
-                                question={currentQuestion}
-                                value={answers[currentQuestion.id]}
+                                options={currentQuestion.options || []}
+                                value={answers[currentQuestion.apiField] || []}
                                 onChange={handleAnswer}
-                                onEnter={nextQuestion}
+                                maxSelections={currentQuestion.maxSelections}
                             />
                         )}
                     </div>
-                </div>
+                </motion.div>
+            </AnimatePresence>
+
+            <div className="flex justify-between items-center mt-12 border-t border-white/5 pt-8">
+                <button
+                    onClick={prevQuestion}
+                    disabled={currentIndex === 0}
+                    className={`px-6 py-3 rounded-full text-[var(--text-muted)] hover:text-white transition-colors text-sm font-medium tracking-wide uppercase ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : ''}`}
+                >
+                    ← Anterior
+                </button>
+
+                <button
+                    onClick={nextQuestion}
+                    className="btn btn-primary text-lg px-8 py-3"
+                >
+                    {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente'}
+                </button>
             </div>
 
-            {/* Navigation Footer */}
-            <div className="fixed bottom-0 left-0 w-full p-6 flex justify-between items-center bg-gradient-to-t from-[var(--background)] to-transparent pointer-events-none">
-                <div className="pointer-events-auto">
-                    {currentIndex > 0 && (
-                        <button onClick={prevQuestion} className="btn btn-outline text-sm py-2 px-4">
-                            ← Anterior
-                        </button>
-                    )}
-                </div>
-                <div className="pointer-events-auto">
-                    <button onClick={nextQuestion} className="btn btn-primary text-sm py-2 px-4">
-                        {currentIndex === questions.length - 1 ? 'Finalizar' : 'Siguiente →'}
-                    </button>
-                </div>
-            </div>
         </div>
     );
 }
