@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ffffff;
-  --card-bg: #121212;
+  --card-bg: #09090b;
+  /* Zinc-950 */
   --primary: #FD460C;
   --primary-hover: #ff5e2e;
-  --text-muted: #a3a3a3;
+  --text-muted: #71717a;
+  /* Zinc-400 */
   --border-color: #27272a;
+  /* Zinc-800 */
   --font-main: 'Inter', sans-serif;
 }
 
@@ -24,40 +27,37 @@ body {
   height: 100%;
   width: 100%;
   background-color: var(--background);
-  /* Subtle Grid Pattern for professional feel */
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+  /* refined grid pattern */
+  background-image:
+    linear-gradient(to right, #111 1px, transparent 1px),
+    linear-gradient(to bottom, #111 1px, transparent 1px);
+  background-size: 60px 60px;
   color: var(--foreground);
   font-family: var(--font-main);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- Container / Card Styles --- */
+/* --- High-End Card Surface --- */
 .form-card {
-  background: rgba(20, 20, 20, 0.8);
-  /* Slight transparency */
-  backdrop-filter: blur(20px);
-  /* Glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  /* Sophisticated shadow stack */
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 1),
-    /* Inner black ring */
-    0 20px 50px -10px rgba(0, 0, 0, 0.8),
-    /* Deep shadow */
-    0 0 20px rgba(253, 70, 12, 0.05);
-  /* Subtle glow */
-  overflow: hidden;
+    0 40px 80px -20px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   position: relative;
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  /* Contains the accent line */
 }
 
 /* Animations */
 .fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(10px);
 }
 
 @keyframes fadeIn {
@@ -81,66 +81,63 @@ body {
   border-radius: 3px;
 }
 
-/* Button Styles - Refined */
+/* Button - SaaS Standard */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
   cursor: pointer;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  padding: 0 1.5rem;
+  height: 48px;
 }
 
 .btn-primary {
   background: var(--primary);
   color: white;
-  border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(253, 70, 12, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
   background: var(--primary-hover);
-  border-color: var(--primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(253, 70, 12, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--text-muted);
-  border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-muted);
   color: white;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* Input Base - Card/Box Style (Requested "Container" look) */
+/* Input - Clean & Solid */
 .input-base {
-  background: rgba(255, 255, 255, 0.03);
+  background: #000000;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 1rem 1.25rem;
   width: 100%;
   color: white;
-  font-size: 1.125rem;
+  font-size: 1rem;
+  line-height: 1.5;
   outline: none;
   transition: all 0.2s ease;
 }
 
 .input-base:focus {
   border-color: var(--primary);
-  background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 0 0 4px rgba(253, 70, 12, 0.1);
 }
 
 .input-base::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: #3f3f46;
+  /* Zinc-700 */
 }
