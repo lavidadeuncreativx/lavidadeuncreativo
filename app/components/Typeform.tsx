@@ -109,14 +109,14 @@ export default function Typeform() {
         <div className="w-full max-w-3xl mx-auto px-6 py-12 flex flex-col min-h-screen justify-center relative z-10" ref={containerRef}>
 
             {/* Brand Watermark */}
-            <div className="absolute top-8 left-6 md:left-0 flex items-center gap-2 opacity-30 pointer-events-none">
-                <span className="font-bold tracking-widest uppercase text-xs text-[var(--primary)]">Sutura Systems</span>
+            <div className="absolute top-8 left-6 md:left-0 flex items-center gap-2 pointer-events-none z-0">
+                <span className="font-bold tracking-[0.2em] uppercase text-xs text-[var(--primary)] opacity-80 shadow-[0_0_10px_rgba(253,70,12,0.3)]">Sutura Systems</span>
             </div>
 
             {/* Progress Bar */}
             <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
                 <div
-                    className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_15px_var(--primary)]"
+                    className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_20px_var(--primary)]"
                     style={{ width: `${progress}%` }}
                 />
             </div>
@@ -129,14 +129,14 @@ export default function Typeform() {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                    className="w-full"
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-full relative z-10"
                 >
                     <div className="mb-8">
-                        <span className="text-[var(--primary)] font-mono text-sm tracking-widest uppercase">
+                        <span className="text-[var(--primary)] font-mono text-sm tracking-widest uppercase opacity-80">
                             {currentIndex + 1} <span className="text-white/30">/</span> {questions.length}
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 leading-tight text-white tracking-tight">
+                        <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 leading-tight text-white tracking-tight drop-shadow-lg">
                             {currentQuestion.text}
                         </h2>
                         {currentQuestion.description && (
@@ -179,18 +179,18 @@ export default function Typeform() {
                 </motion.div>
             </AnimatePresence>
 
-            <div className="flex justify-between items-center mt-12 border-t border-white/5 pt-8">
+            <div className="flex justify-between items-center mt-12 border-t border-white/5 pt-8 relative z-10">
                 <button
                     onClick={prevQuestion}
                     disabled={currentIndex === 0}
-                    className={`px-6 py-3 rounded-full text-[var(--text-muted)] hover:text-white transition-colors text-sm font-medium tracking-wide uppercase ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : ''}`}
+                    className={`btn btn-ghost px-6 py-3 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : ''}`}
                 >
                     ← Anterior
                 </button>
 
                 <button
                     onClick={nextQuestion}
-                    className="btn btn-primary text-lg px-8 py-3"
+                    className="btn btn-primary text-lg px-8 py-3 w-40"
                 >
                     {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente'}
                 </button>
