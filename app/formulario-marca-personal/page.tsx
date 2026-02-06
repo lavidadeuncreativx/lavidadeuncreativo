@@ -20,10 +20,10 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center p-6 md:p-12 text-center overflow-hidden">
-      {/* Background */}
-      <div className="animated-gradient-bg">
-        <div className="gradient-blob"></div>
-        <div className="gradient-blob-2"></div>
+      {/* Aurora Background (Matches Form) */}
+      <div className="aurora-bg">
+        <div className="aurora-glow"></div>
+        <div className="aurora-glow-2"></div>
       </div>
 
       <div className="fade-in z-10 flex flex-col gap-6 items-center max-w-3xl mx-auto">

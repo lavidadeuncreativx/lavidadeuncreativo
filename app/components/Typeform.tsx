@@ -116,16 +116,13 @@ export default function Typeform() {
                 />
             </div>
 
-            {/* Main Content Card / Container */}
-            <div className="w-full max-w-xl mx-auto flex flex-col justify-center">
+            {/* Main Content Centered */}
+            <div className="w-full max-w-lg mx-auto z-10 flex flex-col justify-center min-h-[400px]">
 
-                {/* Header: Branding & Counter */}
-                <div className="flex items-center justify-between mb-8 opacity-60">
-                    <span className="font-bold tracking-[0.2em] uppercase text-xs text-[var(--primary)] shadow-[0_0_10px_rgba(253,70,12,0.3)]">
-                        Sutura Systems
-                    </span>
-                    <span className="font-mono text-xs tracking-widest text-white/50">
-                        {currentIndex + 1} / {questions.length}
+                {/* Progress Indicator - Minimal Text */}
+                <div className="mb-6 flex items-center gap-2">
+                    <span className="text-xs font-mono text-[var(--primary)] bg-[rgba(253,70,12,0.1)] px-2 py-1 rounded border border-[rgba(253,70,12,0.2)]">
+                        PASO {currentIndex + 1} DE {questions.length}
                     </span>
                 </div>
 
@@ -138,22 +135,22 @@ export default function Typeform() {
                         animate="center"
                         exit="exit"
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full relative z-10"
+                        className="w-full relative"
                     >
                         {/* Question */}
                         <div className="mb-8">
-                            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight text-white tracking-tight drop-shadow-lg">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight text-white tracking-tight">
                                 {currentQuestion.text}
                             </h2>
                             {currentQuestion.description && (
-                                <p className="text-lg text-[var(--text-muted)] font-light leading-relaxed">
+                                <p className="text-base text-[var(--text-muted)] leading-relaxed">
                                     {currentQuestion.description}
                                 </p>
                             )}
                         </div>
 
                         {/* Input Area */}
-                        <div className="min-h-[120px] mb-8">
+                        <div className="mb-8">
                             {currentQuestion.type === 'text' && (
                                 <TextInput
                                     value={answers[currentQuestion.apiField] || ''}
@@ -169,7 +166,7 @@ export default function Typeform() {
                                     value={answers[currentQuestion.apiField]}
                                     onChange={(val) => {
                                         handleAnswer(val);
-                                        setTimeout(nextQuestion, 300); // Faster auto advance
+                                        setTimeout(nextQuestion, 250);
                                     }}
                                 />
                             )}
@@ -186,23 +183,10 @@ export default function Typeform() {
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Navigation Footer - Inline */}
-                <div className="flex items-center gap-4 border-t border-white/10 pt-6 mt-4">
+                {/* Footer Buttons */}
+                <div className="flex items-center gap-3">
                     <button
                         onClick={nextQuestion}
-                        className="btn btn-primary px-8 py-3 text-base flex-1 md:flex-none md:w-auto min-w-[140px]"
-                    >
-                        {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente ↵'}
-                    </button>
-
-                    <button
-                        onClick={prevQuestion}
-                        disabled={currentIndex === 0}
-                        className={`btn btn-ghost px-6 py-3 text-xs uppercase tracking-widest ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-50 hover:opacity-100'}`}
-                    >
-                        Anterior
-                    </button>
-
                     <div className="hidden md:flex ml-auto text-[10px] text-white/20 uppercase tracking-widest">
                         Presiona Enter ↵
                     </div>
