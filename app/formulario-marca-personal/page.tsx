@@ -20,11 +20,8 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center p-6 md:p-12 text-center overflow-hidden">
-      {/* Aurora Background (Matches Form) */}
-      <div className="aurora-bg">
-        <div className="aurora-glow"></div>
-        <div className="aurora-glow-2"></div>
-      </div>
+      {/* Background - Clean */}
+      <div className="absolute inset-0 bg-black -z-10"></div>
 
       <div className="fade-in z-10 flex flex-col gap-6 items-center max-w-3xl mx-auto">
 

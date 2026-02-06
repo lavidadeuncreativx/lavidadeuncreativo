@@ -79,7 +79,7 @@ export default function Typeform() {
 
     const slideVariants = {
         enter: (direction: string) => ({
-            y: direction === 'forward' ? 50 : -50,
+            y: direction === 'forward' ? 20 : -20,
             opacity: 0
         }),
         center: {
@@ -87,7 +87,7 @@ export default function Typeform() {
             opacity: 1
         },
         exit: (direction: string) => ({
-            y: direction === 'forward' ? -50 : 50,
+            y: direction === 'forward' ? -20 : 20,
             opacity: 0
         })
     };
@@ -95,35 +95,32 @@ export default function Typeform() {
     if (isCompleted) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen text-center p-8 fade-in">
-                <h2 className="text-4xl font-bold mb-4text-[var(--primary)]">
+                <h2 className="text-3xl font-bold mb-4 text-[var(--primary)]">
                     ¡Gracias por completar el diagnóstico!
                 </h2>
                 <p className="text-[var(--text-muted)] text-xl max-w-lg">
-                    Hemos recibido toda tu información. Analizaremos tu perfil y te contactaremos pronto para dar el siguiente paso.
+                    Hemos recibido toda tu información.
                 </p>
             </div>
         );
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 relative z-10" ref={containerRef}>
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 md:p-12 relative" ref={containerRef}>
 
-            {/* Progress Bar - Fixed Top */}
+            {/* Simple Progress Bar */}
             <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
                 <div
-                    className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_20px_var(--primary)]"
+                    className="h-full bg-[var(--primary)] transition-all duration-300 ease-out"
                     style={{ width: `${progress}%` }}
                 />
             </div>
 
-            {/* Main Content Centered */}
-            <div className="w-full max-w-lg mx-auto z-10 flex flex-col justify-center min-h-[400px]">
+            <div className="w-full max-w-2xl mx-auto flex flex-col justify-center min-h-[50vh]">
 
-                {/* Progress Indicator - Minimal Text */}
-                <div className="mb-6 flex items-center gap-2">
-                    <span className="text-xs font-mono text-[var(--primary)] bg-[rgba(253,70,12,0.1)] px-2 py-1 rounded border border-[rgba(253,70,12,0.2)]">
-                        PASO {currentIndex + 1} DE {questions.length}
-                    </span>
+                {/* Question Counter - Minimal */}
+                <div className="mb-6 text-[var(--primary)] text-sm font-mono opacity-80">
+                    {currentIndex + 1} <span className="text-white/20">→</span> {questions.length}
                 </div>
 
                 <AnimatePresence mode="popLayout" custom={direction}>
@@ -134,23 +131,22 @@ export default function Typeform() {
                         initial="enter"
                         animate="center"
                         exit="exit"
-                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full relative"
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="w-full"
                     >
-                        {/* Question */}
-                        <div className="mb-8">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-3 leading-tight text-white tracking-tight">
-                                {currentQuestion.text}
-                            </h2>
-                            {currentQuestion.description && (
-                                <p className="text-base text-[var(--text-muted)] leading-relaxed">
-                                    {currentQuestion.description}
-                                </p>
-                            )}
-                        </div>
+                        {/* Question Text - Big & Clean */}
+                        <h2 className="text-3xl md:text-5xl font-light mb-8 leading-tight text-white">
+                            {currentQuestion.text}
+                        </h2>
 
-                        {/* Input Area */}
-                        <div className="mb-8">
+                        {currentQuestion.description && (
+                            <p className="text-xl text-[var(--text-muted)] font-light leading-relaxed mb-8">
+                                {currentQuestion.description}
+                            </p>
+                        )}
+
+                        {/* Inputs */}
+                        <div className="mb-12">
                             {currentQuestion.type === 'text' && (
                                 <TextInput
                                     value={answers[currentQuestion.apiField] || ''}
@@ -166,7 +162,7 @@ export default function Typeform() {
                                     value={answers[currentQuestion.apiField]}
                                     onChange={(val) => {
                                         handleAnswer(val);
-                                        setTimeout(nextQuestion, 250);
+                                        setTimeout(nextQuestion, 200);
                                     }}
                                 />
                             )}
@@ -183,17 +179,30 @@ export default function Typeform() {
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Footer Buttons */}
-                <div className="flex items-center gap-3">
+                {/* Minimal Navigation */}
+                <div className="flex items-center gap-6 mt-auto pt-8">
                     <button
                         onClick={nextQuestion}
-                    <div className="hidden md:flex ml-auto text-[10px] text-white/20 uppercase tracking-widest">
-                        Presiona Enter ↵
+                        className="bg-[var(--primary)] text-white px-8 py-3 rounded text-lg font-medium hover:bg-opacity-90 transition-all"
+                    >
+                        {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'OK ✓'}
+                    </button>
+
+                    {currentIndex > 0 && (
+                        <button
+                            onClick={prevQuestion}
+                            className="text-white/50 hover:text-white px-4 py-2 text-sm transition-colors"
+                        >
+                            Atrás
+                        </button>
+                    )}
+
+                    <div className="hidden md:block text-xs text-white/20 ml-auto uppercase tracking-wider">
+                        Presiona <strong>Enter ↵</strong>
                     </div>
                 </div>
 
             </div>
-
         </div>
     );
 }

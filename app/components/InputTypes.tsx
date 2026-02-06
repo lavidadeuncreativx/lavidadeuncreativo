@@ -38,7 +38,7 @@ export const TextInput: React.FC<TextInputProps> = ({ value, onChange, onEnter, 
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={placeholder || "Escribe tu respuesta..."}
+                placeholder={placeholder || "Escribe aquí..."}
                 className="input-base"
             />
             {/* Removed the helper text below input for cleaner UI, or move it to a tooltip/subtle hint */}
@@ -57,20 +57,20 @@ export const SelectInput: React.FC<SelectInputProps> = ({ options, value, onChan
                     <div
                         key={option}
                         onClick={() => onChange(option)}
-                        className={`group cursor-pointer px-4 py-3 rounded-xl border transition-all duration-200 flex items-center gap-4
+                        className={`group cursor-pointer py-3 px-4 rounded-md transition-all duration-200 flex items-center gap-4
                             ${isSelected
-                                ? 'border-[var(--primary)] bg-[rgba(253,70,12,0.1)]'
-                                : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
+                                ? 'bg-[rgba(253,70,12,0.1)] text-[var(--primary)]'
+                                : 'bg-transparent hover:bg-white/5 text-white/80 hover:text-white'
                             }`}
                     >
                         <span className={`flex items-center justify-center w-6 h-6 rounded border text-xs font-mono transition-colors
                             ${isSelected ? 'border-[var(--primary)] text-[var(--primary)]' : 'border-white/20 text-white/40'}`}>
                             {letter}
                         </span>
-                        <span className={`text-sm md:text-base transition-colors ${isSelected ? 'text-white font-medium' : 'text-zinc-300'}`}>
+                        <span className="text-xl md:text-2xl font-light">
                             {option}
                         </span>
-                        {isSelected && <span className="ml-auto text-[var(--primary)] text-sm">●</span>}
+                        {isSelected && <span className="ml-auto text-[var(--primary)]">✓</span>}
                     </div>
                 );
             })}
@@ -102,20 +102,20 @@ export const MultiSelectInput: React.FC<SelectInputProps> = ({ options, value, o
                     <div
                         key={option}
                         onClick={() => handleToggle(option)}
-                        className={`group cursor-pointer px-4 py-3 rounded-xl border transition-all duration-200 flex items-center gap-4
+                        className={`group cursor-pointer py-3 px-4 rounded-md transition-all duration-200 flex items-center gap-4
                             ${isSelected
-                                ? 'border-[var(--primary)] bg-[rgba(253,70,12,0.1)]'
-                                : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'
+                                ? 'bg-[rgba(253,70,12,0.1)] text-[var(--primary)]'
+                                : 'bg-transparent hover:bg-white/5 text-white/80 hover:text-white'
                             }`}
                     >
                         <span className={`flex items-center justify-center w-6 h-6 rounded border text-xs font-mono transition-colors
                             ${isSelected ? 'border-[var(--primary)] text-[var(--primary)]' : 'border-white/20 text-white/40'}`}>
                             {letter}
                         </span>
-                        <span className={`text-sm md:text-base transition-colors ${isSelected ? 'text-white font-medium' : 'text-zinc-300'}`}>
+                        <span className="text-xl md:text-2xl font-light">
                             {option}
                         </span>
-                        {isSelected && <span className="ml-auto text-[var(--primary)] text-sm">●</span>}
+                        {isSelected && <span className="ml-auto text-[var(--primary)]">✓</span>}
                     </div>
                 );
             })}
