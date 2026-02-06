@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Typeform from './components/Typeform';
+import Typeform from '../components/Typeform';
 
 export default function Home() {
   const [started, setStarted] = useState(false);
