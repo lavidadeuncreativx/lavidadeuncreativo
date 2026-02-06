@@ -106,14 +106,9 @@ export default function Typeform() {
     }
 
     return (
-        <div className="w-full max-w-3xl mx-auto px-6 py-12 flex flex-col min-h-screen justify-center relative z-10" ref={containerRef}>
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 relative z-10" ref={containerRef}>
 
-            {/* Brand Watermark */}
-            <div className="absolute top-8 left-6 md:left-0 flex items-center gap-2 pointer-events-none z-0">
-                <span className="font-bold tracking-[0.2em] uppercase text-xs text-[var(--primary)] opacity-80 shadow-[0_0_10px_rgba(253,70,12,0.3)]">Sutura Systems</span>
-            </div>
-
-            {/* Progress Bar */}
+            {/* Progress Bar - Fixed Top */}
             <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
                 <div
                     className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_20px_var(--primary)]"
@@ -121,79 +116,98 @@ export default function Typeform() {
                 />
             </div>
 
-            <AnimatePresence mode="popLayout" custom={direction}>
-                <motion.div
-                    key={currentIndex}
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full relative z-10"
-                >
-                    <div className="mb-8">
-                        <span className="text-[var(--primary)] font-mono text-sm tracking-widest uppercase opacity-80">
-                            {currentIndex + 1} <span className="text-white/30">/</span> {questions.length}
-                        </span>
-                        <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 leading-tight text-white tracking-tight drop-shadow-lg">
-                            {currentQuestion.text}
-                        </h2>
-                        {currentQuestion.description && (
-                            <p className="text-xl text-[var(--text-muted)] font-light leading-relaxed">
-                                {currentQuestion.description}
-                            </p>
-                        )}
+            {/* Main Content Card / Container */}
+            <div className="w-full max-w-xl mx-auto flex flex-col justify-center">
+
+                {/* Header: Branding & Counter */}
+                <div className="flex items-center justify-between mb-8 opacity-60">
+                    <span className="font-bold tracking-[0.2em] uppercase text-xs text-[var(--primary)] shadow-[0_0_10px_rgba(253,70,12,0.3)]">
+                        Sutura Systems
+                    </span>
+                    <span className="font-mono text-xs tracking-widest text-white/50">
+                        {currentIndex + 1} / {questions.length}
+                    </span>
+                </div>
+
+                <AnimatePresence mode="popLayout" custom={direction}>
+                    <motion.div
+                        key={currentIndex}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full relative z-10"
+                    >
+                        {/* Question */}
+                        <div className="mb-8">
+                            <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight text-white tracking-tight drop-shadow-lg">
+                                {currentQuestion.text}
+                            </h2>
+                            {currentQuestion.description && (
+                                <p className="text-lg text-[var(--text-muted)] font-light leading-relaxed">
+                                    {currentQuestion.description}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Input Area */}
+                        <div className="min-h-[120px] mb-8">
+                            {currentQuestion.type === 'text' && (
+                                <TextInput
+                                    value={answers[currentQuestion.apiField] || ''}
+                                    onChange={handleAnswer}
+                                    onEnter={nextQuestion}
+                                    autoFocus
+                                />
+                            )}
+
+                            {currentQuestion.type === 'select' && (
+                                <SelectInput
+                                    options={currentQuestion.options || []}
+                                    value={answers[currentQuestion.apiField]}
+                                    onChange={(val) => {
+                                        handleAnswer(val);
+                                        setTimeout(nextQuestion, 300); // Faster auto advance
+                                    }}
+                                />
+                            )}
+
+                            {currentQuestion.type === 'multi-select' && (
+                                <MultiSelectInput
+                                    options={currentQuestion.options || []}
+                                    value={answers[currentQuestion.apiField] || []}
+                                    onChange={handleAnswer}
+                                    maxSelections={currentQuestion.maxSelections}
+                                />
+                            )}
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Navigation Footer - Inline */}
+                <div className="flex items-center gap-4 border-t border-white/10 pt-6 mt-4">
+                    <button
+                        onClick={nextQuestion}
+                        className="btn btn-primary px-8 py-3 text-base flex-1 md:flex-none md:w-auto min-w-[140px]"
+                    >
+                        {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente ↵'}
+                    </button>
+
+                    <button
+                        onClick={prevQuestion}
+                        disabled={currentIndex === 0}
+                        className={`btn btn-ghost px-6 py-3 text-xs uppercase tracking-widest ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-50 hover:opacity-100'}`}
+                    >
+                        Anterior
+                    </button>
+
+                    <div className="hidden md:flex ml-auto text-[10px] text-white/20 uppercase tracking-widest">
+                        Presiona Enter ↵
                     </div>
+                </div>
 
-                    <div className="min-h-[200px]">
-                        {currentQuestion.type === 'text' && (
-                            <TextInput
-                                value={answers[currentQuestion.apiField] || ''}
-                                onChange={handleAnswer}
-                                onEnter={nextQuestion}
-                                autoFocus
-                            />
-                        )}
-
-                        {currentQuestion.type === 'select' && (
-                            <SelectInput
-                                options={currentQuestion.options || []}
-                                value={answers[currentQuestion.apiField]}
-                                onChange={(val) => {
-                                    handleAnswer(val);
-                                    setTimeout(nextQuestion, 400); // Auto advance
-                                }}
-                            />
-                        )}
-
-                        {currentQuestion.type === 'multi-select' && (
-                            <MultiSelectInput
-                                options={currentQuestion.options || []}
-                                value={answers[currentQuestion.apiField] || []}
-                                onChange={handleAnswer}
-                                maxSelections={currentQuestion.maxSelections}
-                            />
-                        )}
-                    </div>
-                </motion.div>
-            </AnimatePresence>
-
-            <div className="flex justify-between items-center mt-12 border-t border-white/5 pt-8 relative z-10">
-                <button
-                    onClick={prevQuestion}
-                    disabled={currentIndex === 0}
-                    className={`btn btn-ghost px-6 py-3 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : ''}`}
-                >
-                    ← Anterior
-                </button>
-
-                <button
-                    onClick={nextQuestion}
-                    className="btn btn-primary text-lg px-8 py-3 w-40"
-                >
-                    {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente'}
-                </button>
             </div>
 
         </div>
