@@ -211,7 +211,7 @@ export default function Typeform() {
                                     Atrás
                                 </button>
                             ) : (
-                                <div className="h-[48px]"></div> {/* Spacer to keep layout stable */}
+                                <div className="h-[48px]"></div>
                             )}
                         </div>
                     </div>
