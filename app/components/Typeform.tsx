@@ -106,103 +106,116 @@ export default function Typeform() {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 md:p-12 relative" ref={containerRef}>
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-6" ref={containerRef}>
 
-            {/* Simple Progress Bar */}
-            <div className="fixed top-0 left-0 w-full h-1 bg-white/5 z-50">
-                <div
-                    className="h-full bg-[var(--primary)] transition-all duration-300 ease-out"
-                    style={{ width: `${progress}%` }}
-                />
-            </div>
+            {/* Main Form Card */}
+            <div className="form-card w-full max-w-2xl min-h-[500px] flex flex-col p-6 md:p-10 relative">
 
-            <div className="w-full max-w-2xl mx-auto flex flex-col justify-center min-h-[50vh]">
-
-                {/* Question Counter - Minimal */}
-                <div className="mb-6 text-[var(--primary)] text-sm font-mono opacity-80">
-                    {currentIndex + 1} <span className="text-white/20">→</span> {questions.length}
-                </div>
-
-                <AnimatePresence mode="popLayout" custom={direction}>
-                    <motion.div
-                        key={currentIndex}
-                        custom={direction}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="w-full"
-                    >
-                        {/* Question Text - Big & Clean */}
-                        <h2 className="text-3xl md:text-5xl font-light mb-8 leading-tight text-white">
-                            {currentQuestion.text}
-                        </h2>
-
-                        {currentQuestion.description && (
-                            <p className="text-xl text-[var(--text-muted)] font-light leading-relaxed mb-8">
-                                {currentQuestion.description}
-                            </p>
-                        )}
-
-                        {/* Inputs */}
-                        <div className="mb-12">
-                            {currentQuestion.type === 'text' && (
-                                <TextInput
-                                    value={answers[currentQuestion.apiField] || ''}
-                                    onChange={handleAnswer}
-                                    onEnter={nextQuestion}
-                                    autoFocus
-                                />
-                            )}
-
-                            {currentQuestion.type === 'select' && (
-                                <SelectInput
-                                    options={currentQuestion.options || []}
-                                    value={answers[currentQuestion.apiField]}
-                                    onChange={(val) => {
-                                        handleAnswer(val);
-                                        setTimeout(nextQuestion, 200);
-                                    }}
-                                />
-                            )}
-
-                            {currentQuestion.type === 'multi-select' && (
-                                <MultiSelectInput
-                                    options={currentQuestion.options || []}
-                                    value={answers[currentQuestion.apiField] || []}
-                                    onChange={handleAnswer}
-                                    maxSelections={currentQuestion.maxSelections}
-                                />
-                            )}
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-
-                {/* Minimal Navigation */}
-                <div className="flex items-center gap-6 mt-auto pt-8">
-                    <button
-                        onClick={nextQuestion}
-                        className="bg-[var(--primary)] text-white px-8 py-3 rounded text-lg font-medium hover:bg-opacity-90 transition-all"
-                    >
-                        {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'OK ✓'}
-                    </button>
-
-                    {currentIndex > 0 && (
-                        <button
-                            onClick={prevQuestion}
-                            className="text-white/50 hover:text-white px-4 py-2 text-sm transition-colors"
-                        >
-                            Atrás
-                        </button>
-                    )}
-
-                    <div className="hidden md:block text-xs text-white/20 ml-auto uppercase tracking-wider">
-                        Presiona <strong>Enter ↵</strong>
+                {/* Header: Logo & Progress */}
+                <div className="flex items-center justify-between mb-10 pb-6 border-b border-white/5">
+                    <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-[var(--primary)] shadow-[0_0_10px_var(--primary)]"></div>
+                        <span className="font-bold tracking-wider uppercase text-xs text-white/90">Sutura Systems</span>
+                    </div>
+                    <div className="text-xs font-mono text-[var(--text-muted)] bg-white/5 px-2 py-1 rounded">
+                        {currentIndex + 1} / {questions.length}
                     </div>
                 </div>
 
+                {/* Content Area */}
+                <div className="flex-1 flex flex-col justify-center relative z-10">
+                    <AnimatePresence mode="popLayout" custom={direction}>
+                        <motion.div
+                            key={currentIndex}
+                            custom={direction}
+                            variants={slideVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="w-full"
+                        >
+                            <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-snug text-white">
+                                {currentQuestion.text}
+                            </h2>
+
+                            {currentQuestion.description && (
+                                <p className="text-base text-[var(--text-muted)] leading-relaxed mb-8">
+                                    {currentQuestion.description}
+                                </p>
+                            )}
+
+                            <div className="mt-6 mb-2">
+                                {currentQuestion.type === 'text' && (
+                                    <TextInput
+                                        value={answers[currentQuestion.apiField] || ''}
+                                        onChange={handleAnswer}
+                                        onEnter={nextQuestion}
+                                        autoFocus
+                                    />
+                                )}
+
+                                {currentQuestion.type === 'select' && (
+                                    <SelectInput
+                                        options={currentQuestion.options || []}
+                                        value={answers[currentQuestion.apiField]}
+                                        onChange={(val) => {
+                                            handleAnswer(val);
+                                            setTimeout(nextQuestion, 200);
+                                        }}
+                                    />
+                                )}
+
+                                {currentQuestion.type === 'multi-select' && (
+                                    <MultiSelectInput
+                                        options={currentQuestion.options || []}
+                                        value={answers[currentQuestion.apiField] || []}
+                                        onChange={handleAnswer}
+                                        maxSelections={currentQuestion.maxSelections}
+                                    />
+                                )}
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* Footer / Navigation */}
+                <div className="flex items-center justify-between mt-10 pt-6 border-t border-white/5">
+                    <button
+                        onClick={prevQuestion}
+                        disabled={currentIndex === 0}
+                        className={`btn btn-secondary text-sm px-6 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                    >
+                        Atrás
+                    </button>
+
+                    <div className="flex items-center gap-4">
+                        <span className="hidden md:block text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
+                            Enter ↵
+                        </span>
+                        <button
+                            onClick={nextQuestion}
+                            className="btn btn-primary text-sm px-8"
+                        >
+                            {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente'}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Progress Bar (Bottom of card) */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5">
+                    <div
+                        className="h-full bg-[var(--primary)] transition-all duration-300"
+                        style={{ width: `${progress}%` }}
+                    />
+                </div>
             </div>
+
+            {/* Copyright / Footer outside card */}
+            <div className="mt-8 text-[10px] text-white/20 uppercase tracking-widest">
+                © Sutura Systems 2025
+            </div>
+
         </div>
     );
 }
