@@ -106,24 +106,32 @@ export default function Typeform() {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-6" ref={containerRef}>
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-4 relative" ref={containerRef}>
 
-            {/* Main Form Card */}
-            <div className="form-card w-full max-w-2xl min-h-[500px] flex flex-col p-6 md:p-10 relative">
+            {/* Main Form Card - Compact & Centered */}
+            <div className="form-card w-full max-w-[480px] min-h-[550px] flex flex-col relative z-10">
 
-                {/* Header: Logo & Progress */}
-                <div className="flex items-center justify-between mb-10 pb-6 border-b border-white/5">
-                    <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-[var(--primary)] shadow-[0_0_10px_var(--primary)]"></div>
-                        <span className="font-bold tracking-wider uppercase text-xs text-white/90">Sutura Systems</span>
-                    </div>
-                    <div className="text-xs font-mono text-[var(--text-muted)] bg-white/5 px-2 py-1 rounded">
-                        {currentIndex + 1} / {questions.length}
-                    </div>
+                {/* Progress Line (Top of card) */}
+                <div className="w-full h-1 bg-white/5">
+                    <div
+                        className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_10px_var(--primary)]"
+                        style={{ width: `${progress}%` }}
+                    />
                 </div>
 
-                {/* Content Area */}
-                <div className="flex-1 flex flex-col justify-center relative z-10">
+                {/* Card Content */}
+                <div className="flex-1 flex flex-col p-8 md:p-10">
+
+                    {/* Header: Step */}
+                    <div className="flex justify-between items-center mb-8 opacity-60">
+                        <span className="font-bold tracking-widest uppercase text-[10px] text-[var(--primary)]">
+                            Sutura Systems
+                        </span>
+                        <span className="text-[10px] font-mono bg-white/5 px-2 py-1 rounded">
+                            {currentIndex + 1} / {questions.length}
+                        </span>
+                    </div>
+
                     <AnimatePresence mode="popLayout" custom={direction}>
                         <motion.div
                             key={currentIndex}
@@ -133,19 +141,19 @@ export default function Typeform() {
                             animate="center"
                             exit="exit"
                             transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="w-full"
+                            className="w-full flex-1 flex flex-col justify-center"
                         >
-                            <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-snug text-white">
+                            <h2 className="text-2xl font-bold mb-3 leading-tight text-white text-center">
                                 {currentQuestion.text}
                             </h2>
 
                             {currentQuestion.description && (
-                                <p className="text-base text-[var(--text-muted)] leading-relaxed mb-8">
+                                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-8 text-center px-4">
                                     {currentQuestion.description}
                                 </p>
                             )}
 
-                            <div className="mt-6 mb-2">
+                            <div className="mt-4 mb-6">
                                 {currentQuestion.type === 'text' && (
                                     <TextInput
                                         value={answers[currentQuestion.apiField] || ''}
@@ -177,43 +185,35 @@ export default function Typeform() {
                             </div>
                         </motion.div>
                     </AnimatePresence>
-                </div>
 
-                {/* Footer / Navigation */}
-                <div className="flex items-center justify-between mt-10 pt-6 border-t border-white/5">
-                    <button
-                        onClick={prevQuestion}
-                        disabled={currentIndex === 0}
-                        className={`btn btn-secondary text-sm px-6 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-                    >
-                        Atrás
-                    </button>
-
-                    <div className="flex items-center gap-4">
-                        <span className="hidden md:block text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
-                            Enter ↵
-                        </span>
+                    {/* Footer: Stacked Buttons */}
+                    <div className="mt-auto pt-6 flex flex-col gap-3">
                         <button
                             onClick={nextQuestion}
-                            className="btn btn-primary text-sm px-8"
+                            className="btn btn-primary w-full py-4 text-base"
                         >
-                            {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Siguiente'}
+                            {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'Continuar'}
                         </button>
+
+                        <div className="h-8 flex items-center justify-center">
+                            {currentIndex > 0 && (
+                                <button
+                                    onClick={prevQuestion}
+                                    className="text-xs text-white/40 hover:text-white transition-colors uppercase tracking-wider font-medium px-4 py-2"
+                                >
+                                    Volver
+                                </button>
+                            )}
+                        </div>
                     </div>
+
                 </div>
 
-                {/* Progress Bar (Bottom of card) */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5">
-                    <div
-                        className="h-full bg-[var(--primary)] transition-all duration-300"
-                        style={{ width: `${progress}%` }}
-                    />
-                </div>
             </div>
 
-            {/* Copyright / Footer outside card */}
-            <div className="mt-8 text-[10px] text-white/20 uppercase tracking-widest">
-                © Sutura Systems 2025
+            {/* Footer outside */}
+            <div className="mt-6 text-[10px] text-white/10 uppercase tracking-widest text-center">
+                Presiona <strong>Enter ↵</strong> para continuar
             </div>
 
         </div>
