@@ -1,42 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f0f0f;
+  --foreground: #ffffff;
+  --accent: #d4a373; /* Elegant Gold/Beige */
+  --accent-hover: #faedcd;
+  --secondary: #2a2a2a;
+  --secondary-hover: #3a3a3a;
+  --text-muted: #a0a0a0;
+  --success: #606c38;
+  --error: #bc4749;
+  --font-sans: 'Inter', sans-serif;
+  --transition-speed: 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Premium Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow: hidden; /* Prevent scrolling, controlled by JS/Typeform logic */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Typography */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+p {
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 720px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Premium Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  color: var(--background);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--secondary-hover);
+  color: var(--foreground);
+}
+
+.btn-outline:hover {
+  border-color: var(--foreground);
+  background-color: var(--secondary);
+}
+
+/* Custom Input Styles */
+input[type="text"],
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  padding: 1rem 0;
+  font-size: 1.5rem; /* Large typeform style */
+  color: var(--foreground);
+  outline: none;
+  transition: border-color var(--transition-speed) ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Selection Cards */
+.selection-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background-color: var(--secondary);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.8rem;
+  color: var(--foreground);
+  font-size: 1.1rem;
+}
+
+.selection-card:hover {
+  background-color: var(--secondary-hover);
+}
+
+.selection-card.selected {
+  background-color: var(--secondary-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.selection-card .key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--text-muted);
+  border-radius: 4px;
+  margin-right: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.selection-card.selected .key {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: rgba(212, 163, 115, 0.1);
+}
+
+/* Progres Bar */
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--secondary);
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent);
+  transition: width 0.5s ease;
 }
