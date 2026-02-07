@@ -119,28 +119,29 @@ export default function Typeform() {
             </header>
 
             {/* Main Content Area - Flex Grow to Center */}
-            <main className="flex-1 flex flex-col items-center justify-center p-4 w-full">
+            <main className="flex-1 flex flex-col items-center justify-center p-6 w-full relative z-20">
 
                 {/* Form Card */}
-                <div className="form-card w-full max-w-[500px] flex flex-col relative z-20">
+                <div className="form-card w-full max-w-[550px] min-h-[500px] flex flex-col relative">
 
                     {/* Progress Accent Line */}
-                    <div className="w-full h-[2px] bg-zinc-900">
+                    <div className="w-full h-[3px] bg-zinc-900/50">
                         <div
-                            className="h-full bg-[var(--primary)] transition-all duration-500 ease-out"
+                            className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_15px_var(--primary)]"
                             style={{ width: `${progress}%` }}
                         />
                     </div>
 
-                    {/* Step Number - Inside Card Padding */}
-                    <div className="px-10 pt-10 pb-4">
-                        <span className="text-sm font-mono text-[var(--primary)] bg-[rgba(253,70,12,0.1)] px-2 py-1 rounded inline-block">
-                            {(currentIndex + 1).toString().padStart(2, '0')} / {questions.length}
-                        </span>
-                    </div>
+                    {/* Content Container */}
+                    <div className="flex-1 flex flex-col p-10 md:p-12">
 
-                    {/* Content */}
-                    <div className="px-10 pb-10 flex-1 flex flex-col">
+                        {/* Step Number */}
+                        <div className="mb-8">
+                            <span className="text-xs font-bold tracking-widest text-[var(--primary)] uppercase bg-[rgba(253,70,12,0.08)] px-3 py-1.5 rounded-full border border-[rgba(253,70,12,0.1)]">
+                                Pregunta {(currentIndex + 1).toString().padStart(2, '0')} / {questions.length}
+                            </span>
+                        </div>
+
                         <AnimatePresence mode="popLayout" custom={direction}>
                             <motion.div
                                 key={currentIndex}
@@ -149,18 +150,20 @@ export default function Typeform() {
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
-                                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full"
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                className="w-full flex-1 flex flex-col"
                             >
-                                <h2 className="text-3xl font-semibold mb-3 text-white leading-tight tracking-tight">
+                                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-[1.1] tracking-tight">
                                     {currentQuestion.text}
                                 </h2>
 
-                                <p className="text-[var(--text-muted)] text-base leading-relaxed mb-8 min-h-[48px]">
-                                    {currentQuestion.description || "Por favor responde con detalle."}
-                                </p>
+                                {currentQuestion.description && (
+                                    <p className="text-lg text-zinc-400 leading-relaxed mb-10 max-w-md">
+                                        {currentQuestion.description}
+                                    </p>
+                                )}
 
-                                <div className="mb-8">
+                                <div className="mb-10 w-full mt-auto">
                                     {currentQuestion.type === 'text' && (
                                         <TextInput
                                             value={answers[currentQuestion.apiField] || ''}
@@ -195,10 +198,10 @@ export default function Typeform() {
                         </AnimatePresence>
 
                         {/* Footer in Card */}
-                        <div className="flex flex-col gap-3 mt-auto">
+                        <div className="flex flex-col gap-4 pt-6 border-t border-zinc-900/50">
                             <button
                                 onClick={nextQuestion}
-                                className="btn btn-primary w-full"
+                                className="btn btn-primary w-full text-lg h-14"
                             >
                                 {currentIndex === questions.length - 1 ? (isSubmitting ? 'Finalizando...' : 'Finalizar') : 'Continuar'}
                             </button>
@@ -206,12 +209,12 @@ export default function Typeform() {
                             {currentIndex > 0 ? (
                                 <button
                                     onClick={prevQuestion}
-                                    className="btn btn-secondary w-full"
+                                    className="btn btn-secondary w-full text-sm"
                                 >
-                                    Atrás
+                                    Volver a la anterior
                                 </button>
                             ) : (
-                                <div className="h-[48px]"></div>
+                                <div className="h-10"></div>
                             )}
                         </div>
                     </div>
