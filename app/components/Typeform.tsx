@@ -106,42 +106,77 @@ export default function Typeform() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-[var(--background)] selection:bg-[var(--primary)] selection:text-white" ref={containerRef}>
+        <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-8 bg-zinc-950 text-white selection:bg-orange-500 selection:text-white" ref={containerRef}>
 
-            {/* Page Header - Flex Item */}
-            <header className="w-full p-8 flex justify-between items-center z-10">
-                <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></div>
-                    <span className="font-bold tracking-[0.2em] uppercase text-xs text-zinc-400">
-                        Sutura Systems
-                    </span>
+            {/* Main Card Container - Max Width 6XL for "High End" Feel */}
+            <div className="w-full max-w-6xl min-h-[700px] bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:grid md:grid-cols-2 relative border border-zinc-800">
+
+                {/* LEFT COLUMN: Visuals / Brand / Context */}
+                <div className="relative w-full h-64 md:h-full flex flex-col justify-between p-8 md:p-12 overflow-hidden bg-black">
+
+                    {/* Background Abstract Art */}
+                    <div className="absolute inset-0 z-0 opacity-40">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--primary)] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-pulse"></div>
+                        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-900 rounded-full mix-blend-multiply filter blur-[80px] opacity-20"></div>
+                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+                    </div>
+
+                    {/* Brand Header */}
+                    <div className="relative z-10">
+                        <span className="font-bold tracking-widest uppercase text-xs md:text-sm text-white/90">
+                            Sutura Systems
+                        </span>
+                        <div className="h-1 w-8 bg-[var(--primary)] mt-4"></div>
+                    </div>
+
+                    {/* Context / tagline */}
+                    <div className="relative z-10 mt-auto hidden md:block">
+                        <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-4 tracking-tight">
+                            Construye tu <br />
+                            <span className="text-zinc-500">Legado Digital.</span>
+                        </h1>
+                        <p className="text-zinc-400 text-sm max-w-xs leading-relaxed">
+                            Responde con honestidad. Este es el primer paso para escalar tu marca personal al siguiente nivel.
+                        </p>
+                    </div>
+
+                    {/* Footer Socials (Mobile: Hidden, Desktop: Visible) */}
+                    <div className="relative z-10 mt-12 hidden md:block">
+                        <a
+                            href="https://instagram.com/lavidadeuncreativo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2"
+                        >
+                            <span>@lavidadeuncreativo</span>
+                            <span className="text-[var(--primary)]">↗</span>
+                        </a>
+                    </div>
                 </div>
-            </header>
 
-            {/* Main Content Area - Flex Grow to Center */}
-            <main className="flex-1 flex flex-col items-center justify-center p-6 w-full relative z-20">
+                {/* RIGHT COLUMN: Form Interaction */}
+                <div className="relative w-full h-full flex flex-col p-8 md:p-16 lg:p-20 bg-zinc-900/50">
 
-                {/* Form Card */}
-                <div className="form-card w-full max-w-[550px] min-h-[500px] flex flex-col relative">
-
-                    {/* Progress Accent Line */}
-                    <div className="w-full h-[3px] bg-zinc-900/50">
+                    {/* Progress Bar (Thin, Minimal) */}
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-zinc-800">
                         <div
-                            className="h-full bg-[var(--primary)] transition-all duration-500 ease-out shadow-[0_0_15px_var(--primary)]"
+                            className="h-full bg-[var(--primary)] transition-all duration-500 ease-out"
                             style={{ width: `${progress}%` }}
                         />
                     </div>
 
-                    {/* Content Container */}
-                    <div className="flex-1 flex flex-col p-10 md:p-12">
+                    {/* Step Counter */}
+                    <div className="mb-12 flex items-center justify-between">
+                        <span className="font-mono text-sm text-[var(--primary)]">
+                            {(currentIndex + 1).toString().padStart(2, '0')}
+                        </span>
+                        <span className="font-mono text-xs text-zinc-600 uppercase tracking-widest">
+                            {currentIndex + 1} de {questions.length}
+                        </span>
+                    </div>
 
-                        {/* Step Number */}
-                        <div className="mb-8">
-                            <span className="text-xs font-bold tracking-widest text-[var(--primary)] uppercase bg-[rgba(253,70,12,0.08)] px-3 py-1.5 rounded-full border border-[rgba(253,70,12,0.1)]">
-                                Pregunta {(currentIndex + 1).toString().padStart(2, '0')} / {questions.length}
-                            </span>
-                        </div>
-
+                    {/* Interaction Area */}
+                    <div className="flex-1 flex flex-col justify-center max-w-lg mx-auto w-full">
                         <AnimatePresence mode="popLayout" custom={direction}>
                             <motion.div
                                 key={currentIndex}
@@ -150,27 +185,27 @@ export default function Typeform() {
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
-                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                                className="w-full flex-1 flex flex-col"
+                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="w-full flex-col"
                             >
-                                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-[1.1] tracking-tight">
+                                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-white leading-tight">
                                     {currentQuestion.text}
                                 </h2>
 
                                 {currentQuestion.description && (
-                                    <p className="text-lg text-zinc-400 leading-relaxed mb-10 max-w-md">
+                                    <p className="text-base text-zinc-400 leading-relaxed mb-10 border-l-2 border-zinc-800 pl-4">
                                         {currentQuestion.description}
                                     </p>
                                 )}
 
-                                <div className="mb-10 w-full mt-auto">
+                                <div className="mb-12 space-y-6">
                                     {currentQuestion.type === 'text' && (
                                         <TextInput
                                             value={answers[currentQuestion.apiField] || ''}
                                             onChange={handleAnswer}
                                             onEnter={nextQuestion}
                                             autoFocus
-                                            placeholder="Escribe tu respuesta aquí..."
+                                            placeholder="Escribe tu respuesta..."
                                         />
                                     )}
 
@@ -196,50 +231,11 @@ export default function Typeform() {
                                 </div>
                             </motion.div>
                         </AnimatePresence>
-
-                        {/* Footer in Card */}
-                        <div className="flex flex-col gap-4 pt-6 border-t border-zinc-900/50">
-                            <button
-                                onClick={nextQuestion}
-                                className="btn btn-primary w-full text-lg h-14"
-                            >
-                                {currentIndex === questions.length - 1 ? (isSubmitting ? 'Finalizando...' : 'Finalizar') : 'Continuar'}
-                            </button>
-
-                            {currentIndex > 0 ? (
-                                <button
-                                    onClick={prevQuestion}
-                                    className="btn btn-secondary w-full text-sm"
-                                >
-                                    Volver a la anterior
-                                </button>
-                            ) : (
-                                <div className="h-10"></div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Visual Hint */}
-                <div className="mt-8 text-zinc-600 text-xs text-center flex items-center gap-2 opacity-50">
-                    <span className="bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded text-[10px]">ENTER ↵</span>
-                    <span>para continuar</span>
-                </div>
-
-            </main>
-
-            {/* Page Footer - Flex Item */}
-            <footer className="w-full p-8 text-center bg-gradient-to-t from-black to-transparent z-10">
-                <a
-                    href="https://instagram.com/lavidadeuncreativo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-zinc-600 hover:text-[var(--primary)] transition-colors tracking-widest uppercase font-medium"
                 >
-                    @lavidadeuncreativo
-                </a>
-            </footer>
+                        @lavidadeuncreativo
+                    </a>
+                </footer>
 
-        </div>
-    );
+            </div>
+            );
 }
