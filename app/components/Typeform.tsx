@@ -259,7 +259,7 @@ export default function Typeform() {
                     rel="noopener noreferrer"
                     className="bg-white/90 backdrop-blur px-4 py-2 rounded-full border border-gray-100 text-[10px] text-gray-400 hover:text-black transition-colors shadow-sm"
                 >
-                    POWERED BY <strong>SUTURA</strong>
+                    POWERED BY <strong>SUTURA</strong> <span className="opacity-50 ml-1 text-[9px]">v2.0</span>
                 </a>
             </div>
 
