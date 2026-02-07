@@ -41,7 +41,6 @@ export const TextInput: React.FC<TextInputProps> = ({ value, onChange, onEnter, 
                 placeholder={placeholder}
                 className="input-base"
             />
-            {/* Removed the helper text below input for cleaner UI, or move it to a tooltip/subtle hint */}
         </div>
     );
 };
@@ -57,20 +56,20 @@ export const SelectInput: React.FC<SelectInputProps> = ({ options, value, onChan
                     <div
                         key={option}
                         onClick={() => onChange(option)}
-                        className={`group cursor-pointer p-4 rounded-xl border transition-all duration-200 flex items-center gap-4
+                        className={`group cursor-pointer p-3 rounded border transition-all duration-200 flex items-center gap-4
                             ${isSelected
-                                ? 'border-[var(--primary)] bg-[var(--primary)] text-white shadow-lg'
-                                : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300'
+                                ? 'border-[#0445AF] bg-[rgba(4,69,175,0.05)] ring-1 ring-[#0445AF]'
+                                : 'border-gray-300 bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.05)] hover:border-gray-400'
                             }`}
                     >
-                        <span className={`flex items-center justify-center w-6 h-6 rounded border text-xs font-mono transition-colors
-                            ${isSelected ? 'border-white/40 text-white' : 'border-zinc-700 text-zinc-500'}`}>
+                        <span className={`flex items-center justify-center w-8 h-8 rounded border text-sm font-bold transition-colors
+                            ${isSelected ? 'border-[#0445AF] bg-[#0445AF] text-white' : 'border-gray-300 text-gray-500 bg-white'}`}>
                             {letter}
                         </span>
-                        <span className="text-sm font-medium">
+                        <span className="text-xl text-[#262627] font-light">
                             {option}
                         </span>
-                        {isSelected && <span className="ml-auto text-white">✓</span>}
+                        {isSelected && <span className="ml-auto text-[#0445AF] text-xl">✓</span>}
                     </div>
                 );
             })}
@@ -102,25 +101,25 @@ export const MultiSelectInput: React.FC<SelectInputProps> = ({ options, value, o
                     <div
                         key={option}
                         onClick={() => handleToggle(option)}
-                        className={`group cursor-pointer p-4 rounded-xl border transition-all duration-200 flex items-center gap-4
+                        className={`group cursor-pointer p-3 rounded border transition-all duration-200 flex items-center gap-4
                             ${isSelected
-                                ? 'border-[var(--primary)] bg-[var(--primary)] text-white shadow-lg'
-                                : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300'
+                                ? 'border-[#0445AF] bg-[rgba(4,69,175,0.05)] ring-1 ring-[#0445AF]'
+                                : 'border-gray-300 bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.05)] hover:border-gray-400'
                             }`}
                     >
-                        <span className={`flex items-center justify-center w-6 h-6 rounded border text-xs font-mono transition-colors
-                            ${isSelected ? 'border-white/40 text-white' : 'border-zinc-700 text-zinc-500'}`}>
+                        <span className={`flex items-center justify-center w-8 h-8 rounded border text-sm font-bold transition-colors
+                             ${isSelected ? 'border-[#0445AF] bg-[#0445AF] text-white' : 'border-gray-300 text-gray-500 bg-white'}`}>
                             {letter}
                         </span>
-                        <span className="text-sm font-medium">
+                        <span className="text-xl text-[#262627] font-light">
                             {option}
                         </span>
-                        {isSelected && <span className="ml-auto text-white">✓</span>}
+                        {isSelected && <span className="ml-auto text-[#0445AF] text-xl">✓</span>}
                     </div>
                 );
             })}
 
-            <div className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-500 text-right">
+            <div className="mt-4 text-xs font-medium uppercase tracking-wide text-gray-400 text-right">
                 {maxSelections ? `Máximo ${maxSelections}` : 'Selección múltiple'}
             </div>
         </div>
