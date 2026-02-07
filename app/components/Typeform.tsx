@@ -146,10 +146,9 @@ export default function Typeform() {
                             href="https://instagram.com/lavidadeuncreativo"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2"
+                            className="text-xs text-zinc-600 hover:text-[var(--primary)] transition-colors tracking-widest uppercase font-medium"
                         >
-                            <span>@lavidadeuncreativo</span>
-                            <span className="text-[var(--primary)]">↗</span>
+                            @lavidadeuncreativo
                         </a>
                     </div>
                 </div>
