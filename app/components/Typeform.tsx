@@ -57,6 +57,9 @@ export default function Typeform() {
     const [direction, setDirection] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // Validation State
+    const [error, setError] = useState(false);
+
     // Auto-scroll to top when question changes
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -65,17 +68,37 @@ export default function Typeform() {
 
     const handleAnswer = (value: any) => {
         setAnswers({ ...answers, [currentQuestion.apiField]: value });
+        if (error) setError(false);
+    };
+
+    const validateAndProceed = () => {
+        const value = answers[currentQuestion.apiField];
+        const isMulti = currentQuestion.type === 'multi-select';
+
+        let isValid = false;
+        if (isMulti) {
+            isValid = Array.isArray(value) && value.length > 0;
+        } else {
+            isValid = value && typeof value === 'string' && value.trim().length > 0;
+        }
+
+        if (isValid) {
+            setError(false);
+            if (currentIndex < questions.length - 1) {
+                setDirection(1);
+                setCurrentIndex(currentIndex + 1);
+            } else {
+                submitForm();
+            }
+        } else {
+            setError(true);
+            // Vibrating/Shake animation reset
+            setTimeout(() => setError(false), 500);
+        }
     };
 
     const nextQuestion = () => {
-        if (!answers[currentQuestion.apiField] && currentQuestion.type !== 'multi-select') return; // Basic validation
-
-        if (currentIndex < questions.length - 1) {
-            setDirection(1);
-            setCurrentIndex(currentIndex + 1);
-        } else {
-            submitForm();
-        }
+        validateAndProceed();
     };
 
     const prevQuestion = () => {
@@ -96,7 +119,7 @@ export default function Typeform() {
     // Animation Variants
     const slideVariants = {
         enter: (direction: number) => ({
-            y: direction > 0 ? 50 : -50,
+            y: direction > 0 ? 30 : -30,
             opacity: 0,
         }),
         center: {
@@ -104,13 +127,14 @@ export default function Typeform() {
             opacity: 1,
         },
         exit: (direction: number) => ({
-            y: direction < 0 ? 50 : -50,
+            y: direction < 0 ? 30 : -30,
             opacity: 0,
         }),
     };
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setError(false);
     }, [currentIndex]);
 
     return (
@@ -124,13 +148,13 @@ export default function Typeform() {
                 />
             </div>
 
-            {/* Main Content (Centered) */}
-            <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-0">
-                <div className="w-full max-w-2xl">
+            {/* Main Content (Centered and Constrained) */}
+            <div className="flex-1 flex flex-col items-center justify-center p-6 md:px-0">
+                <div className="w-full max-w-3xl mx-auto flex flex-col items-start min-h-[50vh]">
 
                     {/* Question Counter (Minimal) */}
-                    <div className="mb-6 flex items-center gap-2 text-[#0445AF] text-sm font-medium">
-                        <span>{currentIndex + 1}</span>
+                    <div className="mb-8 flex items-center gap-2 text-[#0445AF] text-sm font-semibold tracking-wide uppercase">
+                        <span>Pregunta {currentIndex + 1}</span>
                         <span className="text-gray-300">/</span>
                         <span className="text-gray-400">{questions.length}</span>
                     </div>
@@ -144,20 +168,20 @@ export default function Typeform() {
                             animate="center"
                             exit="exit"
                             transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="w-full"
+                            className="w-full flex flex-col items-start"
                         >
-                            <h2 className="text-2xl md:text-3xl font-light mb-8 leading-snug">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light mb-8 leading-snug text-left">
                                 <span className="font-bold mr-2">{currentIndex + 1}.</span>
-                                {currentQuestion.text}
+                                {currentQuestion.text as string}
                             </h2>
 
                             {currentQuestion.description && (
-                                <p className="text-xl text-gray-500 mb-8 font-light">
-                                    {currentQuestion.description}
+                                <p className="text-xl text-gray-500 mb-10 font-normal leading-relaxed max-w-2xl">
+                                    {currentQuestion.description as string}
                                 </p>
                             )}
 
-                            <div className="mb-12">
+                            <div className={`w-full mb-12 transition-transform duration-100 ${error ? 'translate-x-[-4px]' : ''}`}>
                                 {currentQuestion.type === 'text' && (
                                     <TextInput
                                         value={answers[currentQuestion.apiField] || ''}
@@ -174,7 +198,15 @@ export default function Typeform() {
                                         value={answers[currentQuestion.apiField]}
                                         onChange={(val) => {
                                             handleAnswer(val);
-                                            setTimeout(nextQuestion, 200);
+                                            // Small delay for natural interaction
+                                            setTimeout(() => {
+                                                if (currentIndex < questions.length - 1) {
+                                                    setDirection(1);
+                                                    setCurrentIndex(currentIndex + 1);
+                                                } else {
+                                                    submitForm();
+                                                }
+                                            }, 250);
                                         }}
                                     />
                                 )}
@@ -187,21 +219,27 @@ export default function Typeform() {
                                         maxSelections={currentQuestion.maxSelections}
                                     />
                                 )}
+
+                                {error && (
+                                    <div className="mt-4 text-[#bd081c] bg-[#ffebeb] px-4 py-2 rounded-md inline-flex items-center text-sm font-medium animate-pulse">
+                                        ⚠️ Debes responder esta pregunta para continuar.
+                                    </div>
+                                )}
                             </div>
 
                             {/* Actions / Navigation */}
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-6 mt-4">
                                 <button
                                     onClick={nextQuestion}
-                                    className="btn btn-primary text-lg px-8 py-3"
+                                    className="btn btn-primary text-xl px-12 py-4 shadow-lg hover:shadow-xl transition-all"
                                 >
-                                    {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'OK'} <span className="text-xs opacity-70 ml-2">↵</span>
+                                    {currentIndex === questions.length - 1 ? (isSubmitting ? 'Enviando...' : 'Finalizar') : 'OK'} <span className="text-base opacity-70 ml-2">↵</span>
                                 </button>
 
                                 {currentIndex > 0 && (
                                     <button
                                         onClick={prevQuestion}
-                                        className="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors uppercase tracking-wider"
+                                        className="text-sm font-bold text-gray-400 hover:text-gray-800 transition-colors uppercase tracking-wider px-4 py-2"
                                     >
                                         ATRÁS
                                     </button>
@@ -214,12 +252,12 @@ export default function Typeform() {
             </div>
 
             {/* Minimal Footer */}
-            <div className="fixed bottom-4 right-4 z-40">
+            <div className="fixed bottom-6 right-6 z-40">
                 <a
                     href="https://instagram.com/lavidadeuncreativo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white/90 backdrop-blur px-3 py-1 rounded border border-gray-200 text-[10px] text-gray-400 hover:text-black transition-colors"
+                    className="bg-white/90 backdrop-blur px-4 py-2 rounded-full border border-gray-100 text-[10px] text-gray-400 hover:text-black transition-colors shadow-sm"
                 >
                     POWERED BY <strong>SUTURA</strong>
                 </a>
