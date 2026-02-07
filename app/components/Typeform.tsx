@@ -230,11 +230,28 @@ export default function Typeform() {
                                 </div>
                             </motion.div>
                         </AnimatePresence>
-                >
-                        @lavidadeuncreativo
-                    </a>
-                </footer>
+                    </div>
+
+                    {/* Navigation Buttons (Bottom of Right Col) */}
+                    <div className="mt-auto pt-8 flex items-center justify-between gap-4 border-t border-zinc-800/50">
+                        <button
+                            onClick={prevQuestion}
+                            disabled={currentIndex === 0}
+                            className={`flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors uppercase tracking-wider font-medium px-4 py-3 rounded-lg hover:bg-zinc-800 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                        >
+                            <span>←</span> Atrás
+                        </button>
+
+                        <button
+                            onClick={nextQuestion}
+                            className="btn btn-primary px-8 py-3 text-sm shadow-none md:shadow-lg"
+                        >
+                            {currentIndex === questions.length - 1 ? (isSubmitting ? 'Finalizando...' : 'Finalizar') : 'Continuar'}
+                        </button>
+                    </div>
+                </div>
 
             </div>
-            );
+        </div>
+    );
 }
